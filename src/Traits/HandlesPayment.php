@@ -24,9 +24,9 @@ trait HandlesPayment
         DB::transaction(function () use ($orderValue) {
             $remainingOrderValue = $orderValue;
 
-            $wallets = $this->wallets()->whereIn('type', $this->walletsInOrder())->get();
+            $walletsInOrder = $this->wallets()->whereIn('type', $this->walletsInOrder())->get();
 
-            foreach ($wallets as $wallet) {
+            foreach ($walletsInOrder as $wallet) {
                 if (! $wallet || ! $wallet->hasBalance()) {
                     continue;
                 }
