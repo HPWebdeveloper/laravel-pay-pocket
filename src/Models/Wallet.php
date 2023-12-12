@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * HPWebdeveloper\LaravelPayPocket\Models\Wallet
  *
  * @property mixed $balance
- * @property HPWebdeveloper\LaravelPayPocket\Enums\WalletEnums $type
+ * @property WalletEnums $type
  */
 class Wallet extends Model
 {
