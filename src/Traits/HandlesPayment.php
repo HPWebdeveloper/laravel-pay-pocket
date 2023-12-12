@@ -10,8 +10,6 @@ trait HandlesPayment
     /**
      * Pay the order value from the user's wallets.
      *
-     * @param int|float $orderValue
-     * @return void
      *
      * @throws InsufficientBalanceException
      */
