@@ -2,7 +2,6 @@
 
 namespace HPWebdeveloper\LaravelPayPocket\Traits;
 
-use App\Enums\WalletEnums;
 use HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException;
 use Illuminate\Support\Facades\DB;
 
@@ -11,11 +10,12 @@ trait HandlesPayment
     /**
      * Pay the order value from the user's wallets.
      *
+     * @param int|float $orderValue
      * @return void
      *
      * @throws InsufficientBalanceException
      */
-    public function pay(int|float $orderValue)
+    public function pay(int|float $orderValue): void
     {
         if (! $this->hasSufficientBalance($orderValue)) {
             throw new InsufficientBalanceException('Insufficient balance to cover the order.');
@@ -24,10 +24,9 @@ trait HandlesPayment
         DB::transaction(function () use ($orderValue) {
             $remainingOrderValue = $orderValue;
 
-            foreach ($this->walletsInOrder() as $walletInOrder) {
-                $walletEnumType = WalletEnums::tryFrom($walletInOrder);
-                $wallet = $this->wallets()->where('type', $walletEnumType)->first();
+            $wallets = $this->wallets()->whereIn('type', $this->walletsInOrder())->get();
 
+            foreach ($wallets as $wallet) {
                 if (! $wallet || ! $wallet->hasBalance()) {
                     continue;
                 }
