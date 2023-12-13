@@ -43,7 +43,7 @@ composer require hpwebdeveloper/laravel-pay-pocket
 php artisan vendor:publish --tag="pay-pocket-migrations"
 php artisan migrate
 ```
-
+You have successfully added two dedicated database tables, `wallets` and `wallets_logs`, without making any modifications to the `users` table.
 
 - **Step 3:** Publish the wallet types using
 
