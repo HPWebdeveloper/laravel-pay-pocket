@@ -85,11 +85,12 @@ enum WalletEnums: string
 }
 
 ```
-You have complete freedom to name your wallets as per your requirements and even add more wallet types to the Enum list.
+**You have complete freedom to name your wallets as per your requirements and even add more wallet types to the Enum list.**
 
 
-In this particular setup, `wallet_1` (`WALLET1`) is given the highest priority. When an order payment is processed, the system will first attempt to use `wallet_1` to cover the cost. If `wallet_1` does not have sufficient funds, `wallet_2` (`WALLET2`) will be used next.
+In this particular setup, `wallet_1` (`WALLET1`) is given the **highest priority**. When an order payment is processed, the system will first attempt to use `wallet_1` to cover the cost. If `wallet_1` does not have sufficient funds, `wallet_2` (`WALLET2`) will be used next.
 
+### Example:
 If the balance in `wallet_1` is 10 and the balance in `wallet_2` is 20, and you need to pay an order value of 15, the payment process will first utilize the entire balance of `wallet_1`. Since `wallet_1`'s balance is insufficient to cover the full amount, the remaining 5 will be deducted from `wallet_2`. After the payment, `wallet_2` will have a remaining balance of 15."
 
 ## Usage, APIs and Operations:
