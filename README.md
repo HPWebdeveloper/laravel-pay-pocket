@@ -6,7 +6,7 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/hpwebdeveloper/laravel-pay-pocket/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/hpwebdeveloper/laravel-pay-pocket/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/hpwebdeveloper/laravel-pay-pocket/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/hpwebdeveloper/laravel-pay-pocket/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 
-**Laravel Pay Pocket** is a simple package designed for Laravel applications, offering the flexibility to manage multiple wallet types within two dedicated database tables, `wallets` and `wallets_logs`.
+**Laravel Pay Pocket** is a package designed for Laravel applications, offering the flexibility to manage multiple wallet types within two dedicated database tables, `wallets` and `wallets_logs`.
 
 **Note:** This package does not handle payments from payment platforms, but instead offers the concept of virtual money, deposit and withdraw.
 
@@ -53,7 +53,7 @@ php artisan vendor:publish --tag="pay-pocket-wallets"
 
 This command will automatically publish the `WalletEnums.php` file into your application's `app/Enums` directory.
 
-## Usage
+## Preparation
 
 ### Prepare User Model
 
@@ -92,7 +92,7 @@ In this particular setup, `wallet_1` (`WALLET1`) is given the highest priority. 
 
 If the balance in `wallet_1` is 10 and the balance in `wallet_2` is 20, and you need to pay an order value of 15, the payment process will first utilize the entire balance of `wallet_1`. Since `wallet_1`'s balance is insufficient to cover the full amount, the remaining 5 will be deducted from `wallet_2`. After the payment, `wallet_2` will have a remaining balance of 15."
 
-
+## Usage, APIs and Operations:
 ### Deposit
 
 ```php
