@@ -150,6 +150,8 @@ Upon examining the `src/Exceptions` directory within the source code,
 you will discover a variety of exceptions tailored to address each scenario of invalid entry.
 
 ### Log
+
+A typical `wallets_logs` table.
 ![Laravel Pay Pocket Log](https://github.com/HPWebdeveloper/laravel-pay-pocket/assets/16323354/a242d335-8bd2-4af1-aa38-4e95b8870941)
 
 
