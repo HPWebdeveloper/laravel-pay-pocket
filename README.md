@@ -113,8 +113,9 @@ Note: `wallet_1` and `wallet_2` must already be defined in the `WalletEnums`.
 
 ### Pay
 ```php
-$user->pay(12.34); // Pay the value using the total combined balance available across all wallets
-
+// Pay the value using the total combined balance available across all wallets
+$user->pay(12.34);
+ 
 // Or using provided facade
 
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
