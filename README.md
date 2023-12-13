@@ -8,7 +8,7 @@
 
 **Laravel Pay Pocket** is a simple package designed for Laravel applications, offering the flexibility to manage multiple wallet types within two dedicated database tables, `wallets` and `wallets_logs`.
 
-**Note:** This package does not handle payments from payment platforms, but instead offers the concept of virtual money.
+**Note:** This package does not handle payments from payment platforms, but instead offers the concept of virtual money, deposit and withdraw.
 
 * **Author**: Hamed Panjeh
 * **Vendor**: hpwebdeveloper
