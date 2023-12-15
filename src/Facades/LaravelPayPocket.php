@@ -5,7 +5,7 @@ namespace HPWebdeveloper\LaravelPayPocket\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \HPWebdeveloper\LaravelPayPocket\LaravelPayPocket
+ * @see \HPWebdeveloper\LaravelPayPocket\Services\PocketServices
  */
 class LaravelPayPocket extends Facade
 {
