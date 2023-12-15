@@ -31,11 +31,11 @@
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
+        "imanghafoori/php-imports-analyzer": "1.0.*",
         "spatie/laravel-ray": "^1.26"
     },
     "autoload": {
         "psr-4": {
-            "HPWebdeveloper\\LaravelPayPocket\\": "src/",
             "HPWebdeveloper\\LaravelPayPocket\\": "src/",
             "HPWebdeveloper\\LaravelPayPocket\\Database\\Factories\\": "database/factories/",
             "HPWebdeveloper\\LaravelPayPocket\\Tests\\Database\\Factories\\": "tests/database/factories"
