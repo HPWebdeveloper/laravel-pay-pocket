@@ -5,10 +5,12 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/hpwebdeveloper/laravel-pay-pocket.svg?style=flat-square)](https://packagist.org/packages/hpwebdeveloper/laravel-pay-pocket)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/hpwebdeveloper/laravel-pay-pocket/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/hpwebdeveloper/laravel-pay-pocket/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/hpwebdeveloper/laravel-pay-pocket/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/hpwebdeveloper/laravel-pay-pocket/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Imports](https://github.com/HPWebdeveloper/laravel-pay-pocket/actions/workflows/imports.yml/badge.svg?branch=main)](https://github.com/HPWebdeveloper/laravel-pay-pocket/actions/workflows/imports.yml)
+
 
 **Laravel Pay Pocket** is a package designed for Laravel applications, offering the flexibility to manage multiple wallet types within two dedicated database tables, `wallets` and `wallets_logs`.
 
-**Note:** This package does not handle payments from payment platforms, but instead offers the concept of virtual money, deposit and withdraw.
+**Note:** This package does not handle payments from payment platforms, but instead offers the concept of virtual money, deposit, and withdrawal.
 
 * **Author**: Hamed Panjeh
 * **Vendor**: hpwebdeveloper
@@ -27,9 +29,7 @@
 | x.x     |  |               |  |          |     |   |
 
 
-## Installation
-
-
+## Installation:
 
 - **Step 1:** You can install the package via composer:
 
@@ -57,7 +57,7 @@ This command will automatically publish the `WalletEnums.php` file into your app
 
 ### Prepare User Model
 
-To use this package you need to implements the `WalletOperations` into `User` model and utlize the  `ManagesWallet` trait.
+To use this package you need to implement the `WalletOperations` into `User` model and utilize the  `ManagesWallet` trait.
 
 ```php
 
@@ -74,7 +74,7 @@ class User extends Authenticatable implements WalletOperations
 
 In Laravel Pay Pocket, you have the flexibility to define the order in which wallets are prioritized for payments through the use of Enums. The order of wallets in the Enum file determines their priority level. The first wallet listed has the highest priority and will be used first for deducting order values. 
 
-For example, consider the following wallet types defined in the Enum class (published in the step 3 of installation):
+For example, consider the following wallet types defined in the Enum class (published in step 3 of installation):
 ```php
 namespace App\Enums;
 
