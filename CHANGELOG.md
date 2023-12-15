@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pay-pocket` will be documented in this file.
 
+## v1.0.3 - 2023-12-15
+
+- [1.x] Fix problematic class references by @imanghafoori1 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/4
+
 ## v1.0.2 - 2023-12-15
 
 - [1.x] Create check_imports.yml by @imanghafoori1 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/3
