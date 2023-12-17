@@ -149,7 +149,7 @@ LaravelPayPocket::walletBalanceByType($user, 'wallet_1');
 
 ### Exceptions
 Upon examining the `src/Exceptions` directory within the source code, 
-you will discover a variety of exceptions tailored to address each scenario of invalid entry.
+you will discover a variety of exceptions tailored to address each scenario of invalid entry. Review the [demo](https://github.com/HPWebdeveloper/demo-pay-pocket) that accounts for some of the exceptions.
 
 ### Log
 
