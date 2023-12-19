@@ -17,6 +17,7 @@
 * **Author**: Hamed Panjeh
 * **Vendor**: hpwebdeveloper
 * **Package**: laravel-pay-pocket
+* **alias name**: Laravel PPP (Laravel Pay Pocket Package)
 * **Version**: `1.x`
 * **PHP Version**: 8.1+
 * **Laravel Version**: `10.x`
