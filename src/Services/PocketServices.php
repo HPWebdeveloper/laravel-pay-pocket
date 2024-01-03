@@ -4,22 +4,60 @@ namespace HPWebdeveloper\LaravelPayPocket\Services;
 
 class PocketServices
 {
-    public function deposit($user, $type, $amount, ?string $detail = null)
+    /**
+     * Deposit an amount to the user's wallet of a specific type.
+     *
+     * @param $user
+     * @param string $type
+     * @param int|float $amount
+     * @param ?string $detail
+     *
+     * @return bool
+     */
+    public function deposit($user, string $type, int|float $amount, ?string $detail = null): bool
     {
         return $user->deposit($type, $amount, $detail);
     }
 
-    public function pay($user, $orderValue, array $restrictedWallets = [], ?string $detail = null)
+    /**
+     * Pay the order value from the user's wallets.
+     *
+     * @param $user
+     * @param int|float $orderValue
+     * @param array $allowedWallets
+     * @param ?string $detail
+     *
+     * @return void
+     * @throws InsufficientBalanceException
+     */
+    public function pay($user, $orderValue, array $allowedWallets = [], ?string $detail = null): void
     {
-        return $user->pay($orderValue, $restrictedWallets, $detail);
+        return $user->pay($orderValue, $allowedWallets, $detail);
     }
 
-    public function checkBalance($user)
+    /**
+     * Get the balance of the user.
+     *
+     *
+     * @param $user
+     *
+     * @return float|int
+     */
+    public function checkBalance($user): float|int
     {
         return $user->walletBalance;
     }
 
-    public function walletBalanceByType($user, $type)
+    /**
+     * Get the balance of a specific wallet type.
+     *
+     *
+     * @param $user
+     * @param string $type
+     *
+     * @return float|int
+     */
+    public function walletBalanceByType($user, string $type): float|int
     {
         return $user->getWalletBalanceByType($type);
     }

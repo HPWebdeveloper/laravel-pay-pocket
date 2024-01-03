@@ -46,7 +46,7 @@ trait HasWallet
     /**
      *  Check if User's wallet balance is more than given value
      *
-     * @var int|float $value
+     * @param int|float $value
      *
      * @return bool
      */
@@ -59,7 +59,7 @@ trait HasWallet
      * Get the balance of a specific wallet type.
      *
      *
-     * @var string $walletType
+     * @param string $walletType
      *
      * @return float|int
      */
