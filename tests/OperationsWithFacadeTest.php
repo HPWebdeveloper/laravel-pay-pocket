@@ -18,7 +18,6 @@ test('user can deposit fund', function () {
     expect(LaravelPayPocket::walletBalanceByType($user, 'wallet_2'))->toBeFloat(234.56);
 
     expect(LaravelPayPocket::checkBalance($user))->toBeFloat(234.56);
-
 });
 
 test('user can deposit two times', function () {
@@ -34,7 +33,6 @@ test('user can deposit two times', function () {
     expect(LaravelPayPocket::walletBalanceByType($user, 'wallet_2'))->toBeFloat(1023.68);
 
     expect(LaravelPayPocket::checkBalance($user))->toBeFloat(1023.68);
-
 });
 
 test('user can pay order', function () {

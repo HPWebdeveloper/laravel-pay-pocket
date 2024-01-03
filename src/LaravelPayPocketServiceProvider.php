@@ -30,5 +30,16 @@ class LaravelPayPocketServiceProvider extends PackageServiceProvider
         $this->publishes([
             __DIR__ . '/../Enums/' => app_path('Enums'),
         ], 'pay-pocket-wallets');
+
+
+        $this->publishes([
+            __DIR__ . '/../config/pay-pocket.php' => config_path('pay-pocket.php'),
+        ], 'config');
+    }
+
+    public function registeringPackage()
+    {
+        // Automatically apply the package configuration
+        $this->mergeConfigFrom(__DIR__ . '/../config/pay-pocket.php', 'pay-pocket');
     }
 }
