@@ -107,40 +107,94 @@ If the balance in `wallet_1` is 10 and the balance in `wallet_2` is 20, and you 
 ### Deposit
 
 ```php
+deposit(type: 'wallet_1', amount: 123.45, detail: null)
+```
+
+Deposit funds into `wallet_1`
+
+```php
 $user = auth()->user();
+$user->deposit('wallet_1', 123.45);
+```
 
-$user->deposit('wallet_1', 123.45); // Deposit funds into 'wallet_1'
+Deposit funds into `wallet_2`
 
-$user->deposit('wallet_2', 67.89); // Deposit funds into 'wallet_2'
+```php
+$user = auth()->user();
+$user->deposit('wallet_2', 67.89);
+```
 
-// Or using provided facade
+Or using provided facade
 
+```php
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 
+$user = auth()->user();
 LaravelPayPocket::deposit($user, 'wallet_1', 123.45);
 
 ```
 
 Note: `wallet_1` and `wallet_2` must already be defined in the `WalletEnums`.
 
+#### Transaction Info ([#8][i8])
+
+In a case where you want to enter descriptions for a particular transaction, the `$detail` property allows you to provide information about why a transaction happened.
+
+```php
+$user = auth()->user();
+$user->deposit('wallet_1', 67.89, 'You ordered pizza.');
+```
+
 ### Pay
 
 ```php
-// Pay the value using the total combined balance available across all wallets
+pay(amount: 12.34, allowedWallets: [], detail: null)
+```
+
+Pay the value using the total combined balance available across all allowed wallets
+
+```php
+$user = auth()->user();
 $user->pay(12.34);
+```
 
-// Or using provided facade
+Or using provided facade
 
+```php
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 
+$user = auth()->user();
 LaravelPayPocket::pay($user, 12.34);
 ```
+
+By default the sytem will attempt to pay using all available wallets exept the `allowedWallets` param is provided.
+
+#### Allowed Wallets ([#8][i8])
+
+Sometimes you want to mark a wallet as restricted so that when the `pay()` method is called, the system does not attempt to charge that wallet, a possible use case is an escrow wallet, the `$allowedWallets` property of the pay method allows you to do just that.
+
+```php
+$user = auth()->user();
+$user->pay(12.34, ['wallet_1']);
+```
+
+#### Transaction Info ([#8][i8])
+
+In a case where you want to enter descriptions for a particular transaction, the `$detail` property allows you to provide information about why a transaction happened.
+
+```php
+$user = auth()->user();
+$user->pay(12.34, [], 'You ordered pizza.');
+```
+
+[i8]: https://github.com/HPWebdeveloper/laravel-pay-pocket/issues/8
 
 ### Balance
 
 -   **Wallets**
 
 ```php
+$user = auth()->user();
 $user->walletBalance // Total combined balance available across all wallets
 
 // Or using provided facade
@@ -151,6 +205,7 @@ LaravelPayPocket::checkBalance($user);
 -   **Particular Wallet**
 
 ```php
+$user = auth()->user();
 $user->getWalletBalanceByType('wallet_1') // Balance available in wallet_1
 $user->getWalletBalanceByType('wallet_2') // Balance available in wallet_2
 
@@ -165,6 +220,23 @@ Upon examining the `src/Exceptions` directory within the source code,
 you will discover a variety of exceptions tailored to address each scenario of invalid entry. Review the [demo](https://github.com/HPWebdeveloper/demo-pay-pocket) that accounts for some of the exceptions.
 
 ### Log
+
+Getting your transaction logs is a pretty straight forward process
+
+```php
+$user = auth()->user();
+$query = $user->wallets()
+    ->where('type', \App\Enums\WalletEnums::WALLET1)
+    ->first()
+    ->logs();
+```
+
+This will return an instance of `\Illuminate\Database\Eloquent\Relations\MorphMany`
+from there you can handle any manipulations with your data.
+
+```php
+$logs = $query->get();
+```
 
 A typical `wallets_logs` table.
 ![Laravel Pay Pocket Log](https://github.com/HPWebdeveloper/laravel-pay-pocket/assets/16323354/a242d335-8bd2-4af1-aa38-4e95b8870941)
