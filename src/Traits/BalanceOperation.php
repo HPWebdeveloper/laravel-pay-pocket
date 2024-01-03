@@ -45,7 +45,7 @@ trait BalanceOperation
 
         $refGen = config('pay-pocket.log_reference_generator', [Str::class, 'random', [12]]);
 
-        $reference = config('pay-pocket.reference_string_prefix', '');
+        $reference = config('pay-pocket.log_reference_prefix', '');
 
         $reference .= isset($refGen[0], $refGen[1])
             ? $refGen[0]::{$refGen[1]}(...$refGen[2] ?? [])
