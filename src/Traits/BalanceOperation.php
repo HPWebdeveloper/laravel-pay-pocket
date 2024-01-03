@@ -9,7 +9,9 @@ trait BalanceOperation
     protected $createdLog;
 
     /**
-     *  Check if Balance is more than zero.
+     * Check if Balance is more than zero.
+     *
+     * @return bool
      */
     public function hasBalance(): bool
     {
@@ -17,7 +19,12 @@ trait BalanceOperation
     }
 
     /**
-     *  Decrement Balance and create a log entry.
+     * Decrement Balance and create a log entry.
+     *
+     * @var int|float $value
+     * @var ?string $detail
+     *
+     * @return void
      */
     public function decrementAndCreateLog($value, ?string $detail = null): void
     {
@@ -26,7 +33,12 @@ trait BalanceOperation
     }
 
     /**
-     *  Increment Balance and create a log entry.
+     * Increment Balance and create a log entry.
+     *
+     * @var int|float $value
+     * @var ?string $detail
+     *
+     * @return void
      */
     public function incrementAndCreateLog($value, ?string $detail = null): void
     {
@@ -35,7 +47,13 @@ trait BalanceOperation
     }
 
     /**
-     *  Create a new log record
+     * Create a new log record
+     *
+     * @var string $logType
+     * @var int|float $value
+     * @var ?string $detail
+     *
+     * @return void
      */
     protected function createLog($logType, $value, ?string $detail = null): void
     {

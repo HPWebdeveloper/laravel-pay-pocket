@@ -22,7 +22,9 @@ trait HasWallet
     }
 
     /**
-     *  Get User's Wallet Balance
+     * Get User's Wallet Balance
+     *
+     * @return int|float
      */
     public function getWalletBalanceAttribute()
     {
@@ -39,11 +41,14 @@ trait HasWallet
         }
 
         return $totalBalance;
-
     }
 
     /**
      *  Check if User's wallet balance is more than given value
+     *
+     * @var int|float $value
+     *
+     * @return bool
      */
     public function hasSufficientBalance($value): bool
     {
@@ -52,6 +57,9 @@ trait HasWallet
 
     /**
      * Get the balance of a specific wallet type.
+     *
+     *
+     * @var string $walletType
      *
      * @return float|int
      */
