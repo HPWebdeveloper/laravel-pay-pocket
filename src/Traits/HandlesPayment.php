@@ -13,19 +13,19 @@ trait HandlesPayment
      *
      * @throws InsufficientBalanceException
      */
-    public function pay(int|float $orderValue, $detail = null): void
+    public function pay(int|float $orderValue, $detail = null, array $restrictedWallets = []): void
     {
         if (! $this->hasSufficientBalance($orderValue)) {
             throw new InsufficientBalanceException('Insufficient balance to cover the order.');
         }
 
-        DB::transaction(function () use ($orderValue, $detail) {
+        DB::transaction(function () use ($orderValue, $detail, $restrictedWallets) {
             $remainingOrderValue = $orderValue;
 
             $walletsInOrder = $this->wallets()->whereIn('type', $this->walletsInOrder())->get();
 
             foreach ($walletsInOrder as $wallet) {
-                if (! $wallet || ! $wallet->hasBalance()) {
+                if (! $wallet || ! $wallet->hasBalance() || in_array($wallet, $restrictedWallets)) {
                     continue;
                 }
 
