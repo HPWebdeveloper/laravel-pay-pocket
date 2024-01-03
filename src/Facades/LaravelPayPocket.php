@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @see \HPWebdeveloper\LaravelPayPocket\Services\PocketServices
  *
- * @method void pay($user, int|float $orderValue, array $allowedWallets = [], ?string $detail = null)
- * @method bool deposit($user, string $type, int|float $amount, ?string $detail = null)
- * @method int|float checkBalance($user)
- * @method int|float walletBalanceByType($user, string $type)
+ * @method static void pay($user, int|float $orderValue, array $allowedWallets = [], ?string $detail = null)
+ * @method static bool deposit($user, string $type, int|float $amount, ?string $detail = null)
+ * @method static int|float checkBalance($user)
+ * @method static int|float walletBalanceByType($user, string $type)
  */
 class LaravelPayPocket extends Facade
 {
