@@ -19,7 +19,7 @@ trait BalanceOperation
     /**
      *  Decrement Balance and create a log entry.
      */
-    public function decrementAndCreateLog($value, $detail = null): void
+    public function decrementAndCreateLog($value, ?string $detail = null): void
     {
         $this->createLog('dec', $value, $detail);
         $this->decrement('balance', $value);
@@ -28,7 +28,7 @@ trait BalanceOperation
     /**
      *  Increment Balance and create a log entry.
      */
-    public function incrementAndCreateLog($value, $detail = null): void
+    public function incrementAndCreateLog($value, ?string $detail = null): void
     {
         $this->createLog('inc', $value, $detail);
         $this->increment('balance', $value);
@@ -37,7 +37,7 @@ trait BalanceOperation
     /**
      *  Create a new log record
      */
-    protected function createLog($logType, $value, $detail = null): void
+    protected function createLog($logType, $value, ?string $detail = null): void
     {
         $currentBalance = $this->balance ?? 0;
 
