@@ -44,7 +44,9 @@ trait BalanceOperation
         $newBalance = $logType === 'dec' ? $currentBalance - $value : $currentBalance + $value;
 
         $refGen = config('pay-pocket.log_reference_generator', [Str::class, 'random', [12]]);
+
         $reference = config('pay-pocket.reference_string_prefix', '');
+
         $reference .= isset($refGen[0], $refGen[1])
             ? $refGen[0]::{$refGen[1]}(...$refGen[2] ?? [])
             : Str::random(config('pay-pocket.log_reference_length', 12));

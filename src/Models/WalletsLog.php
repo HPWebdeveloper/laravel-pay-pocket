@@ -16,7 +16,14 @@ class WalletsLog extends Model
     use HasFactory;
 
     protected $fillable = [
-        'from', 'to', 'type', 'ip', 'value', 'wallet_name',
+        'from',
+        'to',
+        'type',
+        'ip',
+        'value',
+        'wallet_name',
+        'detail',
+        'reference',
     ];
 
     public function loggable(): MorphTo

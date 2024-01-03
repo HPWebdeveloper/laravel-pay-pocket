@@ -34,7 +34,7 @@ class LaravelPayPocketServiceProvider extends PackageServiceProvider
 
         $this->publishes([
             __DIR__ . '/../config/pay-pocket.php' => config_path('pay-pocket.php'),
-        ], 'config');
+        ], 'pay-pocket-config');
     }
 
     public function registeringPackage()
