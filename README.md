@@ -25,9 +25,9 @@
 ### Support Policy
 
 | Version | Laravel | PHP           | Release date | End of improvements | End of support |
-| ------- | ------- | ------------- | ------------ | ------------------- | -------------- |
-| 1.x     | ^10.0   | 8.1, 8.2, 8.3 | Nov 30, 2023 | Mar 1, 2024         |                |
-| x.x     |         |               |              |                     |                |
+| ------- | ------- | ------------- | ------------ | ------------------- | -------------- | --- |
+| 1.x     | ^10.0   | 8.1, 8.2, 8.3 | Nov 30, 2023 | Mar 1, 2024         |                |     |
+| x.x     |         |               |              |                     |                |     |
 
 ## Installation:
 
@@ -138,7 +138,7 @@ Note: `wallet_1` and `wallet_2` must already be defined in the `WalletEnums`.
 
 #### Transaction Info ([#8][i8])
 
-In a case where you want to enter descriptions for a particular transaction, the `$detail` property allows you to provide information about why a transaction happened.
+In a case where you want to enter descriptions for a particular transaction, the `$detail` param allows you to provide information about why a transaction happened.
 
 ```php
 $user = auth()->user();
@@ -171,7 +171,7 @@ By default the sytem will attempt to pay using all available wallets exept the `
 
 #### Allowed Wallets ([#8][i8])
 
-Sometimes you want to mark a wallet as restricted so that when the `pay()` method is called, the system does not attempt to charge that wallet, a possible use case is an escrow wallet, the `$allowedWallets` property of the pay method allows you to do just that.
+Sometimes you want to mark a wallet as restricted so that when the `pay()` method is called, the system does not attempt to charge that wallet, a possible use case is an escrow wallet, the `$allowedWallets` param of the pay method allows you to do just that.
 
 ```php
 $user = auth()->user();
@@ -180,7 +180,7 @@ $user->pay(12.34, ['wallet_1']);
 
 #### Transaction Info ([#8][i8])
 
-In a case where you want to enter descriptions for a particular transaction, the `$detail` property allows you to provide information about why a transaction happened.
+In a case where you want to enter descriptions for a particular transaction, the `$detail` param allows you to provide information about why a transaction happened.
 
 ```php
 $user = auth()->user();
