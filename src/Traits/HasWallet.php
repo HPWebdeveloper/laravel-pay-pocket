@@ -26,7 +26,7 @@ trait HasWallet
      *
      * @return int|float
      */
-    public function getWalletBalanceAttribute()
+    public function getWalletBalanceAttribute(): int|float
     {
 
         $totalBalance = 0;
@@ -63,7 +63,7 @@ trait HasWallet
      *
      * @return float|int
      */
-    public function getWalletBalanceByType(string $walletType)
+    public function getWalletBalanceByType(string $walletType): float|int
     {
         if (! WalletEnums::isValid($walletType)) {
             throw new InvalidWalletTypeException("Invalid wallet type '{$walletType}'.");

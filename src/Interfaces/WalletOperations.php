@@ -4,11 +4,31 @@ namespace HPWebdeveloper\LaravelPayPocket\Interfaces;
 
 interface WalletOperations
 {
-    public function getWalletBalanceAttribute();
+    /**
+     * Get User's Wallet Balance
+     *
+     * @return int|float
+     */
+    public function getWalletBalanceAttribute(): int|float;
 
-    public function getWalletBalanceByType(string $walletType);
+    /**
+     * Get the balance of a specific wallet type.
+     *
+     *
+     * @param string $walletType
+     *
+     * @return float|int
+     */
+    public function getWalletBalanceByType(string $walletType): float|int;
 
-    public function hasSufficientBalance($value): bool;
+    /**
+     *  Check if User's wallet balance is more than given value
+     *
+     * @param int|float $value
+     *
+     * @return bool
+     */
+    public function hasSufficientBalance(int|float $value): bool;
 
     /**
      * Pay the order value from the user's wallets.
