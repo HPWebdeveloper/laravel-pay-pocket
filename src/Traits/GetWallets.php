@@ -6,12 +6,10 @@ use App\Enums\WalletEnums;
 
 trait GetWallets
 {
-    private function walletsInOrder()
+    private function walletsInOrder(): array
     {
         return array_map(
-            function ($enumCase) {
-                return $enumCase->value;
-            },
+            fn($enumCase) => $enumCase->value,
             WalletEnums::cases()
         );
     }

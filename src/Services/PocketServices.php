@@ -2,26 +2,26 @@
 
 namespace HPWebdeveloper\LaravelPayPocket\Services;
 
-use Illuminate\Database\Eloquent\Model;
+use HPWebdeveloper\LaravelPayPocket\Interfaces\WalletOperations;
 
 class PocketServices
 {
-    public function deposit(Model $user, string $type, int|float $amount): bool
+    public function deposit(WalletOperations $user, string $type, int|float $amount): bool
     {
         return $user->deposit($type, $amount);
     }
 
-    public function pay(Model $user, int|float $orderValue): void
+    public function pay(WalletOperations $user, int|float $orderValue): void
     {
         $user->pay($orderValue);
     }
 
-    public function checkBalance(Model $user): int|float
+    public function checkBalance(WalletOperations $user): int|float
     {
-        return $user->walletBalance;
+        return $user->getWalletBalance();
     }
 
-    public function walletBalanceByType(Model $user, string $type): int|float
+    public function walletBalanceByType(WalletOperations $user, string $type): int|float
     {
         return $user->getWalletBalanceByType($type);
     }

@@ -26,7 +26,6 @@ trait HasWallet
      */
     public function getWalletBalanceAttribute()
     {
-
         $totalBalance = 0;
 
         foreach ($this->walletsInOrder() as $walletInOrder) {
@@ -39,7 +38,6 @@ trait HasWallet
         }
 
         return $totalBalance;
-
     }
 
     /**
@@ -53,9 +51,12 @@ trait HasWallet
     /**
      * Get the balance of a specific wallet type.
      *
-     * @return float|int
+     * @param string $walletType
+     * @return int|float
+     * @throws InvalidWalletTypeException
+     * @throws WalletNotFoundException
      */
-    public function getWalletBalanceByType(string $walletType)
+    public function getWalletBalanceByType(string $walletType): int|float
     {
         if (! WalletEnums::isValid($walletType)) {
             throw new InvalidWalletTypeException("Invalid wallet type '{$walletType}'.");
@@ -68,5 +69,10 @@ trait HasWallet
         }
 
         return $wallet->balance;
+    }
+
+    public function getWalletBalance(): int|float
+    {
+        return $this->walletBalance;
     }
 }
