@@ -51,8 +51,6 @@ trait HasWallet
     /**
      * Get the balance of a specific wallet type.
      *
-     * @param string $walletType
-     * @return int|float
      * @throws InvalidWalletTypeException
      * @throws WalletNotFoundException
      */
