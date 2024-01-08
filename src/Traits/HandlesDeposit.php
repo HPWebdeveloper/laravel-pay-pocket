@@ -15,7 +15,7 @@ trait HandlesDeposit
     /**
      * Deposit an amount to the user's wallet of a specific type.
      */
-    public function deposit(string $type, int|float $amount, ?string $notes = null): bool
+    public function deposit(string $type, int|float $amount, string $notes = null): bool
     {
         $depositable = $this->getDepositableTypes();
 

@@ -57,7 +57,7 @@ trait BalanceOperation
             'ip' => \Request::ip(),
             'value' => $value,
             'notes' => $notes,
-            'reference' => $reference
+            'reference' => $reference,
         ]);
 
         $this->createdLog->changeStatus('Done');
