@@ -1,6 +1,7 @@
 <?php
 
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
+use HPWebdeveloper\LaravelPayPocket\Models\WalletsLog;
 use HPWebdeveloper\LaravelPayPocket\Tests\Models\User;
 
 it('can test', function () {
@@ -96,7 +97,18 @@ test('user pay from two wallets', function () {
     expect(LaravelPayPocket::checkBalance($user))->toBeFloat(0.12);
 });
 
-test('description can be added during payment', function () {
+test('notes can be added during deposit', function () {
+    $user = User::factory()->create();
+
+    $type = 'wallet_2';
+
+    $description = \Illuminate\Support\Str::random();
+    LaravelPayPocket::deposit($user, $type, 234.56, $description);
+
+    expect(WalletsLog::where('notes', $description)->exists())->toBe(true);
+});
+
+test('notes can be added during payment', function () {
     $user = User::factory()->create();
 
     $type = 'wallet_2';

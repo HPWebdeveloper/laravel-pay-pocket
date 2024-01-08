@@ -13,7 +13,7 @@ trait HandlesPayment
      *
      * @throws InsufficientBalanceException
      */
-    public function pay(int|float $orderValue, $notes = null): void
+    public function pay(int|float $orderValue, ?string $notes = null): void
     {
         if (! $this->hasSufficientBalance($orderValue)) {
             throw new InsufficientBalanceException('Insufficient balance to cover the order.');
