@@ -7,48 +7,46 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/hpwebdeveloper/laravel-pay-pocket/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/hpwebdeveloper/laravel-pay-pocket/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Imports](https://github.com/HPWebdeveloper/laravel-pay-pocket/actions/workflows/check_imports.yml/badge.svg?branch=main)](https://github.com/HPWebdeveloper/laravel-pay-pocket/actions/workflows/check_imports.yml)
 
-
 **Laravel Pay Pocket** is a package designed for Laravel applications, offering the flexibility to manage multiple wallet types within two dedicated database tables, `wallets` and `wallets_logs`.
 
 **Demo** https://github.com/HPWebdeveloper/demo-pay-pocket
 
 **Note:** This package does not handle payments from payment platforms, but instead offers the concept of virtual money, deposit, and withdrawal.
 
-* **Author**: Hamed Panjeh
-* **Vendor**: hpwebdeveloper
-* **Package**: laravel-pay-pocket
-* **Alias name**: Laravel PPP (Laravel Pay Pocket Package)
-* **Version**: `1.x`
-* **PHP Version**: 8.1+
-* **Laravel Version**: `10.x`
-* **[Composer](https://getcomposer.org/):** `composer require hpwebdeveloper/laravel-pay-pocket`
-
+-   **Author**: Hamed Panjeh
+-   **Vendor**: hpwebdeveloper
+-   **Package**: laravel-pay-pocket
+-   **Alias name**: Laravel PPP (Laravel Pay Pocket Package)
+-   **Version**: `1.x`
+-   **PHP Version**: 8.1+
+-   **Laravel Version**: `10.x`
+-   **[Composer](https://getcomposer.org/):** `composer require hpwebdeveloper/laravel-pay-pocket`
 
 ### Support Policy
 
-| Version | Laravel        | PHP           | Release date | End of improvements | End of support |
-|---------|----------------|---------------|--------------|---------------------|----------------|
-| 1.x     | ^10.0 | 8.1, 8.2, 8.3 | Nov 30, 2023 | Mar 1, 2024         |     |   |
-| x.x     |  |               |  |          |     |   |
-
+| Version | Laravel | PHP           | Release date | End of improvements | End of support |
+| ------- | ------- | ------------- | ------------ | ------------------- | -------------- | --- |
+| 1.x     | ^10.0   | 8.1, 8.2, 8.3 | Nov 30, 2023 | Mar 1, 2024         |                |     |
+| x.x     |         |               |              |                     |                |     |
 
 ## Installation:
 
-- **Step 1:** You can install the package via composer:
+-   **Step 1:** You can install the package via composer:
 
 ```bash
 composer require hpwebdeveloper/laravel-pay-pocket
 ```
 
-- **Step 2:** Publish and run the migrations with:
+-   **Step 2:** Publish and run the migrations with:
 
 ```bash
 php artisan vendor:publish --tag="pay-pocket-migrations"
 php artisan migrate
 ```
+
 You have successfully added two dedicated database tables, `wallets` and `wallets_logs`, without making any modifications to the `users` table.
 
-- **Step 3:** Publish the wallet types using
+-   **Step 3:** Publish the wallet types using
 
 ```bash
 php artisan vendor:publish --tag="pay-pocket-wallets"
@@ -60,7 +58,7 @@ This command will automatically publish the `WalletEnums.php` file into your app
 
 ### Prepare User Model
 
-To use this package you need to implement the `WalletOperations` into `User` model and utilize the  `ManagesWallet` trait.
+To use this package you need to implement the `WalletOperations` into `User` model and utilize the `ManagesWallet` trait.
 
 ```php
 
@@ -75,9 +73,10 @@ class User extends Authenticatable implements WalletOperations
 
 ### Prepare Wallets
 
-In Laravel Pay Pocket, you have the flexibility to define the order in which wallets are prioritized for payments through the use of Enums. The order of wallets in the Enum file determines their priority level. The first wallet listed has the highest priority and will be used first for deducting order values. 
+In Laravel Pay Pocket, you have the flexibility to define the order in which wallets are prioritized for payments through the use of Enums. The order of wallets in the Enum file determines their priority level. The first wallet listed has the highest priority and will be used first for deducting order values.
 
 For example, consider the following wallet types defined in the Enum class (published in step 3 of installation):
+
 ```php
 namespace App\Enums;
 
@@ -88,15 +87,17 @@ enum WalletEnums: string
 }
 
 ```
-**You have complete freedom to name your wallets as per your requirements and even add more wallet types to the Enum list.**
 
+**You have complete freedom to name your wallets as per your requirements and even add more wallet types to the Enum list.**
 
 In this particular setup, `wallet_1` (`WALLET1`) is given the **highest priority**. When an order payment is processed, the system will first attempt to use `wallet_1` to cover the cost. If `wallet_1` does not have sufficient funds, `wallet_2` (`WALLET2`) will be used next.
 
 ### Example:
+
 If the balance in `wallet_1` is 10 and the balance in `wallet_2` is 20, and you need to pay an order value of 15, the payment process will first utilize the entire balance of `wallet_1`. Since `wallet_1`'s balance is insufficient to cover the full amount, the remaining 5 will be deducted from `wallet_2`. After the payment, `wallet_2` will have a remaining balance of 15."
 
 ## Usage, APIs and Operations:
+
 ### Deposit
 
 ```php
@@ -113,13 +114,24 @@ use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 LaravelPayPocket::deposit($user, 'wallet_1', 123.45);
 
 ```
+
 Note: `wallet_1` and `wallet_2` must already be defined in the `WalletEnums`.
 
+#### Transaction Info ([#8][i8])
+
+In a case where you want to enter descriptions for a particular transaction, the `$notes` param allows you to provide information about why a transaction happened.
+
+```php
+$user = auth()->user();
+$user->deposit('wallet_1', 67.89, 'You ordered pizza.');
+```
+
 ### Pay
+
 ```php
 // Pay the value using the total combined balance available across all wallets
 $user->pay(12.34);
- 
+
 // Or using provided facade
 
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
@@ -129,7 +141,8 @@ LaravelPayPocket::pay($user, 12.34);
 
 ### Balance
 
-- **Wallets**
+-   **Wallets**
+
 ```php
 $user->walletBalance // Total combined balance available across all wallets
 
@@ -138,7 +151,8 @@ $user->walletBalance // Total combined balance available across all wallets
 LaravelPayPocket::checkBalance($user);
 ```
 
-- **Particular Wallet**
+-   **Particular Wallet**
+
 ```php
 $user->getWalletBalanceByType('wallet_1') // Balance available in wallet_1
 $user->getWalletBalanceByType('wallet_2') // Balance available in wallet_2
@@ -149,14 +163,14 @@ LaravelPayPocket::walletBalanceByType($user, 'wallet_1');
 ```
 
 ### Exceptions
-Upon examining the `src/Exceptions` directory within the source code, 
+
+Upon examining the `src/Exceptions` directory within the source code,
 you will discover a variety of exceptions tailored to address each scenario of invalid entry. Review the [demo](https://github.com/HPWebdeveloper/demo-pay-pocket) that accounts for some of the exceptions.
 
 ### Log
 
 A typical `wallets_logs` table.
 ![Laravel Pay Pocket Log](https://github.com/HPWebdeveloper/laravel-pay-pocket/assets/16323354/a242d335-8bd2-4af1-aa38-4e95b8870941)
-
 
 ## Testing
 
@@ -185,9 +199,9 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Hamed Panjeh](https://github.com/HPWebdeveloper)
-- [All Contributors](../../contributors)
-- Icon in the above image: pocket by Creative Mahira from [Noun Project](https://thenounproject.com/browse/icons/term/pocket/) (CC BY 3.0)
+-   [Hamed Panjeh](https://github.com/HPWebdeveloper)
+-   [All Contributors](../../contributors)
+-   Icon in the above image: pocket by Creative Mahira from [Noun Project](https://thenounproject.com/browse/icons/term/pocket/) (CC BY 3.0)
 
 ## License
 
