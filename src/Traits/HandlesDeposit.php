@@ -15,7 +15,7 @@ trait HandlesDeposit
     /**
      * Deposit an amount to the user's wallet of a specific type.
      */
-    public function deposit(string $type, int|float $amount, $detail = null): bool
+    public function deposit(string $type, int|float $amount, $notes = null): bool
     {
         $depositable = $this->getDepositableTypes();
 
@@ -27,10 +27,10 @@ trait HandlesDeposit
             throw new InvalidValueException();
         }
 
-        DB::transaction(function () use ($type, $amount, $detail) {
+        DB::transaction(function () use ($type, $amount, $notes) {
             $type = WalletEnums::tryFrom($type);
             $wallet = $this->wallets()->firstOrCreate(['type' => $type]);
-            $wallet->incrementAndCreateLog($amount, $detail);
+            $wallet->incrementAndCreateLog($amount, $notes);
         });
 
         return true;

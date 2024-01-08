@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('wallets_logs', function (Blueprint $table) {
-            if (!Schema::hasColumn('wallets_logs', 'detail')) {
-                $table->string('detail')->nullable()->after('status');
+            if (!Schema::hasColumn('wallets_logs', 'notes')) {
+                $table->string('notes')->nullable()->after('status');
             }
             if (!Schema::hasColumn('wallets_logs', 'reference')) {
                 $table->string('reference')->nullable()->after('ip');
@@ -27,8 +27,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('wallets_logs', function (Blueprint $table) {
-            if (Schema::hasColumn('wallets_logs', 'detail')) {
-                $table->dropColumn('detail');
+            if (Schema::hasColumn('wallets_logs', 'notes')) {
+                $table->dropColumn('notes');
             }
             if (Schema::hasColumn('wallets_logs', 'reference')) {
                 $table->dropColumn('reference');

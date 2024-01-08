@@ -19,25 +19,25 @@ trait BalanceOperation
     /**
      *  Decrement Balance and create a log entry.
      */
-    public function decrementAndCreateLog($value, $detail = null): void
+    public function decrementAndCreateLog($value, $notes = null): void
     {
-        $this->createLog('dec', $value, $detail);
+        $this->createLog('dec', $value, $notes);
         $this->decrement('balance', $value);
     }
 
     /**
      *  Increment Balance and create a log entry.
      */
-    public function incrementAndCreateLog($value, $detail = null): void
+    public function incrementAndCreateLog($value, $notes = null): void
     {
-        $this->createLog('inc', $value, $detail);
+        $this->createLog('inc', $value, $notes);
         $this->increment('balance', $value);
     }
 
     /**
      *  Create a new log record
      */
-    protected function createLog($logType, $value, $detail = null): void
+    protected function createLog($logType, $value, $notes = null): void
     {
         $currentBalance = $this->balance ?? 0;
 
@@ -56,7 +56,7 @@ trait BalanceOperation
             'type' => $logType,
             'ip' => \Request::ip(),
             'value' => $value,
-            'detail' => $detail,
+            'notes' => $notes,
             'reference' => $reference
         ]);
 
