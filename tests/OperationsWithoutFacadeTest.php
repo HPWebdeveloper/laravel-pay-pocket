@@ -17,7 +17,6 @@ test('user can deposit fund', function () {
     expect($user->getWalletBalanceByType('wallet_2'))->toBeFloat(234.56);
 
     expect($user->walletBalance)->toBeFloat(234.56);
-
 });
 
 test('user can deposit two times', function () {
@@ -33,7 +32,6 @@ test('user can deposit two times', function () {
     expect($user->getWalletBalanceByType('wallet_2'))->toBeFloat(1023.68);
 
     expect($user->walletBalance)->toBeFloat(1023.68);
-
 });
 
 test('user can pay order', function () {
@@ -97,4 +95,16 @@ test('user pay from two wallets', function () {
     expect($user->getWalletBalanceByType('wallet_2'))->toBeFloat(0.12);
 
     expect($user->walletBalance)->toBeFloat(0.12);
+});
+
+test('description can be added during payment', function () {
+    $user = User::factory()->create();
+
+    $type = 'wallet_2';
+
+    $description = \Illuminate\Support\Str::random();
+    $user->deposit($type, 234.56);
+    $user->pay(234.56, $description);
+
+    expect(WalletsLog::where('notes', $description)->exists())->toBe(true);
 });

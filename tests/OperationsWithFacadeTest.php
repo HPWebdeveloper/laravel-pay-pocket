@@ -95,3 +95,15 @@ test('user pay from two wallets', function () {
 
     expect(LaravelPayPocket::checkBalance($user))->toBeFloat(0.12);
 });
+
+test('description can be added during payment', function () {
+    $user = User::factory()->create();
+
+    $type = 'wallet_2';
+
+    $description = \Illuminate\Support\Str::random();
+    LaravelPayPocket::deposit($user, $type, 234.56);
+    LaravelPayPocket::pay($user, 234.56, $description);
+
+    expect(WalletsLog::where('notes', $description)->exists())->toBe(true);
+});
