@@ -54,6 +54,12 @@ php artisan vendor:publish --tag="pay-pocket-wallets"
 
 This command will automatically publish the `WalletEnums.php` file into your application's `app/Enums` directory.
 
+## Updating
+
+If updating from version `<= 1.0.3`, new migrations have been added to support the new [Transaction Info Feature](#transaction-info)
+
+Follow the [Installation](#installation) Step 2 to update your migrations.
+
 ## Preparation
 
 ### Prepare User Model
@@ -101,16 +107,29 @@ If the balance in `wallet_1` is 10 and the balance in `wallet_2` is 20, and you 
 ### Deposit
 
 ```php
+deposit(type: 'wallet_1', amount: 123.45, notes: null)
+```
+
+Deposit funds into `wallet_1`
+
+```php
 $user = auth()->user();
+$user->deposit('wallet_1', 123.45);
+```
 
-$user->deposit('wallet_1', 123.45); // Deposit funds into 'wallet_1'
+Deposit funds into `wallet_2`
 
-$user->deposit('wallet_2', 67.89); // Deposit funds into 'wallet_2'
+```php
+$user = auth()->user();
+$user->deposit('wallet_2', 67.89);
+```
 
-// Or using provided facade
+Or using provided facade
 
+```php
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 
+$user = auth()->user();
 LaravelPayPocket::deposit($user, 'wallet_1', 123.45);
 
 ```
@@ -129,15 +148,26 @@ $user->deposit('wallet_1', 67.89, 'You ordered pizza.');
 ### Pay
 
 ```php
-// Pay the value using the total combined balance available across all wallets
+pay(amount: 12.34, notes: null)
+```
+
+Pay the value using the total combined balance available across all allowed wallets
+
+```php
+$user = auth()->user();
 $user->pay(12.34);
+```
 
-// Or using provided facade
+Or using provided facade
 
+```php
 use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 
+$user = auth()->user();
 LaravelPayPocket::pay($user, 12.34);
 ```
+
+By default the sytem will attempt to pay using all available wallets exept the `allowedWallets` param is provided.
 
 ### Balance
 
@@ -206,3 +236,5 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[i8]: https://github.com/HPWebdeveloper/laravel-pay-pocket/issues/8
