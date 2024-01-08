@@ -54,5 +54,8 @@ class TestCase extends Orchestra
 
         $migration = include __DIR__.'/../database/migrations/create_wallets_table.php.stub';
         $migration->up();
+
+        $migration = include __DIR__.'/../database/migrations/update_wallets_logs_table.php.stub';
+        $migration->up();
     }
 }
