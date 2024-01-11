@@ -167,8 +167,6 @@ $user = auth()->user();
 LaravelPayPocket::pay($user, 12.34);
 ```
 
-By default the sytem will attempt to pay using all available wallets exept the `allowedWallets` param is provided.
-
 ### Balance
 
 -   **Wallets**
@@ -237,4 +235,4 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[i8]: https://github.com/HPWebdeveloper/laravel-pay-pocket/issues/8
+[i8]: Tag link (will be updated soon)
