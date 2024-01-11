@@ -4,14 +4,14 @@ namespace HPWebdeveloper\LaravelPayPocket\Services;
 
 class PocketServices
 {
-    public function deposit($user, $type, $amount, $notes = null)
+    public function deposit($user, $type, $amount, $notes = null): bool
     {
         return $user->deposit($type, $amount, $notes);
     }
 
-    public function pay($user, $orderValue, $notes = null)
+    public function pay($user, $orderValue, array $allowedWallets = [], ?string $notes = null): void
     {
-        return $user->pay($orderValue, $notes);
+        $user->pay($orderValue, $allowedWallets, $notes);
     }
 
     public function checkBalance($user)
