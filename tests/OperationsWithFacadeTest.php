@@ -115,7 +115,7 @@ test('notes can be added during payment', function () {
 
     $description = \Illuminate\Support\Str::random();
     LaravelPayPocket::deposit($user, $type, 234.56);
-    LaravelPayPocket::pay($user, 234.56, $description);
+    LaravelPayPocket::pay($user, 234.56, [$type], $description);
 
     expect(WalletsLog::where('notes', $description)->exists())->toBe(true);
 });
@@ -128,4 +128,21 @@ test('transaction reference is added to wallet log', function () {
     LaravelPayPocket::deposit($user, $type, 234.56);
 
     expect(WalletsLog::whereNotNull('reference')->exists())->toBe(true);
+});
+
+test('only the allowed wallets should be charged.', function () {
+
+    $user = User::factory()->create();
+
+    $type = 'wallet_1';
+
+    LaravelPayPocket::deposit($user, $type, 234.56);
+    LaravelPayPocket::pay($user, 234.56, [$type]);
+
+    $last = $user->wallets()
+        ->where('type', \App\Enums\WalletEnums::WALLET1)
+        ->first()
+        ->logs()->latest()->first();
+
+    expect($last->value)->toBeFloat(234.56);
 });

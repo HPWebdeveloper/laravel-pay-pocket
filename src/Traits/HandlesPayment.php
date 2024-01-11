@@ -25,16 +25,20 @@ trait HandlesPayment
             $walletsInOrder = $this->wallets()->whereIn('type', $this->walletsInOrder())->get();
 
             /**
-             * @param string $wallet
+             * @param string|\App\Enums\WalletEnums
              * @return bool $useWallet
              * */
-            $useWallet = fn ($wallet) => count($allowedWallets) < 1 || in_array($wallet, $allowedWallets);
+            $useWallet = function (string|\App\Enums\WalletEnums $wallet) use ($allowedWallets) {
+                return count($allowedWallets) < 1 ||
+                       in_array($wallet, $allowedWallets) ||
+                       in_array($wallet->value, $allowedWallets);
+            };
 
             /**
              * @var BalanceOperation $wallet
              */
             foreach ($walletsInOrder as $wallet) {
-                if (! $wallet || ! $wallet->hasBalance() || !$useWallet($wallet->type->value)) {
+                if (! $wallet || ! $wallet->hasBalance() || !$useWallet($wallet->type)) {
                     continue;
                 }
 
