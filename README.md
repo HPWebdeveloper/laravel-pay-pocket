@@ -50,15 +50,16 @@ You have successfully added two dedicated database tables, `wallets` and `wallet
 
 ```bash
 php artisan vendor:publish --tag="pay-pocket-wallets"
+php artisan vendor:publish --tag="config"
 ```
 
 This command will automatically publish the `WalletEnums.php` file into your application's `app/Enums` directory.
 
 ## Updating
 
-If updating from version `<= 1.0.3`, new migrations have been added to support the new [Transaction Info Feature](#transaction-info)
+If updating from version `<= 1.0.3`, new migration and config files have been added to support the new [Transaction Info Feature](#transaction-info)
 
-Follow the [Installation](#installation) Step 2 to update your migrations.
+Follow the [Installation](#installation) Steps 2 and 3 to update your migrations.
 
 ## Preparation
 
