@@ -120,3 +120,13 @@ test('notes can be added during payment', function () {
 
     expect(WalletsLog::where('notes', $description)->exists())->toBe(true);
 });
+
+test('transaction reference is added to wallet log', function () {
+    $user = User::factory()->create();
+
+    $type = 'wallet_2';
+
+    $user->deposit($type, 234.56);
+
+    expect(WalletsLog::whereNotNull('reference')->exists())->toBe(true);
+});
