@@ -18,7 +18,11 @@ class LaravelPayPocketServiceProvider extends PackageServiceProvider
             ->name('laravel-pay-pocket')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigrations('create_wallets_logs_table', 'create_wallets_table');
+            ->hasMigrations(
+                'create_wallets_logs_table',
+                'create_wallets_table',
+                'add_notes_and_reference_columns_to_wallets_logs_table'
+            );
     }
 
     public function bootingPackage()
@@ -26,5 +30,15 @@ class LaravelPayPocketServiceProvider extends PackageServiceProvider
         $this->publishes([
             __DIR__.'/../Enums/' => app_path('Enums'),
         ], 'pay-pocket-wallets');
+
+        $this->publishes([
+            __DIR__.'/../config/pay-pocket.php' => config_path('pay-pocket.php'),
+        ], 'config');
+    }
+
+    public function registeringPackage()
+    {
+        // Automatically apply the package configuration
+        $this->mergeConfigFrom(__DIR__.'/../config/pay-pocket.php', 'pay-pocket');
     }
 }
