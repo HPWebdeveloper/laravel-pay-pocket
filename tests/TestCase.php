@@ -11,6 +11,30 @@ class TestCase extends Orchestra
 {
     use RefreshDatabase;
 
+    public function getEnvironmentSetUp($app)
+    {
+        config()->set('app.key', 'base64:EWcFBKBT8lKlGK8nQhTHY+wg19QlfmbhtO9Qnn3NfcA=');
+
+        config()->set('database.default', 'testing');
+
+        /*
+        $migration = include __DIR__.'/../database/migrations/create_laravel-pay-pocket_table.php.stub';
+        $migration->up();
+        */
+
+        $migration = include __DIR__.'/database/migrations/create_users_tables.php';
+        $migration->up();
+
+        $migration = include __DIR__.'/../database/migrations/create_wallets_logs_table.php.stub';
+        $migration->up();
+
+        $migration = include __DIR__.'/../database/migrations/create_wallets_table.php.stub';
+        $migration->up();
+
+        $migration = include __DIR__.'/../database/migrations/add_notes_and_reference_columns_to_wallets_logs_table.php.stub';
+        $migration->up();
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -33,29 +57,5 @@ class TestCase extends Orchestra
         return [
             LaravelPayPocketServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('app.key', 'base64:EWcFBKBT8lKlGK8nQhTHY+wg19QlfmbhtO9Qnn3NfcA=');
-
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-pay-pocket_table.php.stub';
-        $migration->up();
-        */
-
-        $migration = include __DIR__.'/database/migrations/create_users_tables.php';
-        $migration->up();
-
-        $migration = include __DIR__.'/../database/migrations/create_wallets_logs_table.php.stub';
-        $migration->up();
-
-        $migration = include __DIR__.'/../database/migrations/create_wallets_table.php.stub';
-        $migration->up();
-
-        $migration = include __DIR__.'/../database/migrations/update_wallets_logs_table.php.stub';
-        $migration->up();
     }
 }

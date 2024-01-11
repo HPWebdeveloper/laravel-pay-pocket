@@ -21,7 +21,7 @@ class LaravelPayPocketServiceProvider extends PackageServiceProvider
             ->hasMigrations(
                 'create_wallets_logs_table',
                 'create_wallets_table',
-                'update_wallets_logs_table'
+                'add_notes_and_reference_columns_to_wallets_logs_table'
             );
     }
 
