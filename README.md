@@ -53,7 +53,7 @@ php artisan vendor:publish --tag="pay-pocket-wallets"
 php artisan vendor:publish --tag="config"
 ```
 
-This command will automatically publish the `WalletEnums.php` file into your application's `app/Enums` directory.
+This command will automatically publish the `pay-pocket.php` config file and also `WalletEnums.php` file into your application's `app/Enums` directory.
 
 ## Updating
 
