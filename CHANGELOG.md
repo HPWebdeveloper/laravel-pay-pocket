@@ -2,9 +2,9 @@
 
 All notable changes to `laravel-pay-pocket` will be documented in this file.
 
-## v1.1.0 - 2024-01-12
+## v2.0.0 - 2024-01-12
 
-- [1.x] Add Transaction note by @3m1n3nc3 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/10
+- [2.x] Add Transaction note by @3m1n3nc3 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/10
 
 ## v1.0.3 - 2023-12-15
 
