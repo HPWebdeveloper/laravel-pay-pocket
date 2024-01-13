@@ -55,9 +55,9 @@ php artisan vendor:publish --tag="config"
 
 This command will automatically publish the `WalletEnums.php` file into your application's `app/Enums` directory.
 
-## Updating
+## Updating to ^2.0.0
 
-If updating from version `<= 1.0.3`, new migration and config files have been added to support the new [Transaction Info Feature](#transaction-info)
+If updating to version `^2.0.0`, new migration and config files have been added to support the new [Transaction Notes Feature](#transaction-notes-8i8)
 
 Follow the [Installation](#installation) Steps 2 and 3 to update your migrations.
 
@@ -137,7 +137,7 @@ LaravelPayPocket::deposit($user, 'wallet_1', 123.45);
 
 Note: `wallet_1` and `wallet_2` must already be defined in the `WalletEnums`.
 
-#### Transaction Info ([#8][i8])
+#### Transaction Notes ([#8][i8])
 
 In a case where you want to enter descriptions for a particular transaction, the `$notes` param allows you to provide information about why a transaction happened.
 
@@ -236,4 +236,4 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[i8]: Tag link (will be updated soon)
+[i8]: https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/10
