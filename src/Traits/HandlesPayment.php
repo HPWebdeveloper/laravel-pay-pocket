@@ -10,10 +10,8 @@ trait HandlesPayment
     /**
      * Pay the order value from the user's wallets.
      *
-     * @param int|float $orderValue
-     * @param ?string $notes
+     * @param  ?string  $notes
      *
-     * @return void
      * @throws \HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException
      */
     public function pay(int|float $orderValue, ?string $notes = null): void

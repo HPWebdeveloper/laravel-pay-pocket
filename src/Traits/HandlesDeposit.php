@@ -15,11 +15,8 @@ trait HandlesDeposit
     /**
      * Deposit an amount to the user's wallet of a specific type.
      *
-     * @param string $type
-     * @param int|float $amount
-     * @param ?string $notes
+     * @param  ?string  $notes
      *
-     * @return bool
      * @throws InvalidDepositException|InvalidValueException|InvalidWalletTypeException
      */
     public function deposit(string $type, int|float $amount, ?string $notes = null): bool
@@ -45,8 +42,6 @@ trait HandlesDeposit
 
     /**
      * Get depositable types from WalletEnums.
-     *
-     * @return array
      */
     private function getDepositableTypes(): array
     {
@@ -61,10 +56,9 @@ trait HandlesDeposit
     /**
      * Check if the given type is valid.
      *
-     * @var string $type
-     * @var array $depositable
+     * @var string
+     * @var array
      *
-     * @return bool
      * @throws InvalidWalletTypeException
      */
     private function isRequestValid($type, array $depositable): bool

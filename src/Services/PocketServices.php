@@ -9,12 +9,7 @@ class PocketServices
     /**
      * Deposit an amount to the user's wallet of a specific type.
      *
-     * @param \Illuminate\Database\Eloquent\Model $user
-     * @param string $type
-     * @param int|float $amount
-     * @param ?string $notes
-     *
-     * @return bool
+     * @param  ?string  $notes
      */
     public function deposit(Model $user, string $type, int|float $amount, ?string $notes = null): bool
     {
@@ -24,11 +19,8 @@ class PocketServices
     /**
      * Pay the order value from the user's wallets.
      *
-     * @param \Illuminate\Database\Eloquent\Model $user
-     * @param int|float $orderValue
-     * @param ?string $notes
+     * @param  ?string  $notes
      *
-     * @return void
      * @throws \HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException
      */
     public function pay(Model $user, int|float $orderValue, ?string $notes = null): void
@@ -38,11 +30,6 @@ class PocketServices
 
     /**
      * Get the balance of the user.
-     *
-     *
-     * @param \Illuminate\Database\Eloquent\Model $user
-     *
-     * @return float|int
      */
     public function checkBalance(Model $user): int|float
     {
@@ -51,12 +38,6 @@ class PocketServices
 
     /**
      * Get the balance of a specific wallet type.
-     *
-     *
-     * @param \Illuminate\Database\Eloquent\Model $user
-     * @param string $type
-     *
-     * @return float|int
      */
     public function walletBalanceByType(Model $user, string $type): float|int
     {
