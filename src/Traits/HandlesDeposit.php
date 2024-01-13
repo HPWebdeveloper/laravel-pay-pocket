@@ -8,16 +8,14 @@ use HPWebdeveloper\LaravelPayPocket\Exceptions\InvalidValueException;
 use HPWebdeveloper\LaravelPayPocket\Exceptions\InvalidWalletTypeException;
 use Illuminate\Support\Facades\DB;
 
-// Use your defined exception
-
 trait HandlesDeposit
 {
     /**
      * Deposit an amount to the user's wallet of a specific type.
      *
-     * @param  ?string  $notes
-     *
-     * @throws InvalidDepositException|InvalidValueException|InvalidWalletTypeException
+     * @throws InvalidDepositException
+     * @throws InvalidValueException
+     * @throws InvalidWalletTypeException
      */
     public function deposit(string $type, int|float $amount, ?string $notes = null): bool
     {
@@ -55,9 +53,6 @@ trait HandlesDeposit
 
     /**
      * Check if the given type is valid.
-     *
-     * @var string
-     * @var array
      *
      * @throws InvalidWalletTypeException
      */

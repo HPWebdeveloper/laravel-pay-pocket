@@ -3,16 +3,11 @@
 namespace HPWebdeveloper\LaravelPayPocket\Exceptions;
 
 use Exception;
+use Throwable;
 
 class InvalidDepositException extends Exception
 {
-    /**
-     * Construct the exception.
-     *
-     * @param  string  $message
-     * @param  int  $code
-     */
-    public function __construct($message = 'Invalid deposit operation', $code = 0, ?\Throwable $previous = null)
+    public function __construct(string $message = 'Invalid deposit operation', int $code = 0, ?Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
