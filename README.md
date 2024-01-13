@@ -236,4 +236,4 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[i8]: https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/10
+[i8]: https://github.com/HPWebdeveloper/laravel-pay-pocket/releases/tag/2.0.0
