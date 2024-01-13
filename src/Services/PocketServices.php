@@ -29,7 +29,7 @@ class PocketServices
      * @param ?string $notes
      *
      * @return void
-     * @throws InsufficientBalanceException
+     * @throws \HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException
      */
     public function pay(Model $user, int|float $orderValue, ?string $notes = null): void
     {
