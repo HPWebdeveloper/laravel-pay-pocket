@@ -18,8 +18,6 @@ trait BalanceOperation
 
     /**
      * Decrement Balance and create a log entry.
-     *
-     * @param  ?string  $notes
      */
     public function decrementAndCreateLog(int|float $value, ?string $notes = null): void
     {
@@ -29,8 +27,6 @@ trait BalanceOperation
 
     /**
      * Increment Balance and create a log entry.
-     *
-     * @param  ?string  $notes
      */
     public function incrementAndCreateLog(int|float $value, ?string $notes = null): void
     {
@@ -40,8 +36,6 @@ trait BalanceOperation
 
     /**
      * Create a new log record
-     *
-     * @param  ?string  $notes
      */
     protected function createLog(string $logType, int|float $value, ?string $notes = null): void
     {
