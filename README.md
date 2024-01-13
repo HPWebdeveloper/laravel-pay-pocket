@@ -55,7 +55,7 @@ php artisan vendor:publish --tag="config"
 
 This command will automatically publish the `pay-pocket.php` config file and also `WalletEnums.php` file into your application's `config` and `app/Enums` directories respectively.
 
-## Updating to ^2.0.0
+## Updating
 
 If updating to version `^2.0.0`, new migration and config files have been added to support the new [Transaction Notes Feature](#transaction-notes-8)
 
@@ -137,7 +137,7 @@ LaravelPayPocket::deposit($user, 'wallet_1', 123.45);
 
 Note: `wallet_1` and `wallet_2` must already be defined in the `WalletEnums`.
 
-#### Transaction Notes ([#8][i8])
+#### Transaction Info ([#8][i8])
 
 When you need to add descriptions for a specific transaction, the `$notes` parameter enables you to provide details explaining the reason behind the transaction.
 
