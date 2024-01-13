@@ -26,8 +26,7 @@ trait HandlesPayment
             $remainingOrderValue = $orderValue;
 
             /**
-             * @var \Illuminate\Support\Collection<TKey, \HPWebdeveloper\LaravelPayPocket\Models
-             * |\HPWebdeveloper\LaravelPayPocket\Traits\BalanceOperation>  $walletsInOrder
+             * @var \Illuminate\Support\Collection<TKey, \HPWebdeveloper\LaravelPayPocket\Models\Wallet>
              */
             $walletsInOrder = $this->wallets()->whereIn('type', $this->walletsInOrder())->get();
 
