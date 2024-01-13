@@ -11,7 +11,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements WalletOperations
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
     use ManagesWallet;
 
     /**

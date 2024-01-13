@@ -9,7 +9,9 @@ trait BalanceOperation
     protected $createdLog;
 
     /**
-     *  Check if Balance is more than zero.
+     * Check if Balance is more than zero.
+     *
+     * @return bool
      */
     public function hasBalance(): bool
     {
@@ -17,27 +19,43 @@ trait BalanceOperation
     }
 
     /**
-     *  Decrement Balance and create a log entry.
+     * Decrement Balance and create a log entry.
+     *
+     * @param int|float $value
+     * @param ?string $notes
+     *
+     * @return void
      */
-    public function decrementAndCreateLog($value, $notes = null): void
+    public function decrementAndCreateLog(int|float $value, ?string $notes = null): void
     {
         $this->createLog('dec', $value, $notes);
         $this->decrement('balance', $value);
     }
 
     /**
-     *  Increment Balance and create a log entry.
+     * Increment Balance and create a log entry.
+     *
+     * @param int|float $value
+     * @param ?string $notes
+     *
+     * @return void
      */
-    public function incrementAndCreateLog($value, $notes = null): void
+    public function incrementAndCreateLog(int|float $value, ?string $notes = null): void
     {
         $this->createLog('inc', $value, $notes);
         $this->increment('balance', $value);
     }
 
     /**
-     *  Create a new log record
+     * Create a new log record
+     *
+     * @param string $logType
+     * @param int|float $value
+     * @param ?string $notes
+     *
+     * @return void
      */
-    protected function createLog($logType, $value, $notes = null): void
+    protected function createLog(string $logType, int|float $value, ?string $notes = null): void
     {
         $currentBalance = $this->balance ?? 0;
 
@@ -46,6 +64,10 @@ trait BalanceOperation
         $refGen = config('pay-pocket.log_reference_generator', [
             Str::class, 'random', [config('pay-pocket.log_reference_length', 12)],
         ]);
+        $refGen = [
+            Str::class, 'random', [config('pay-pocket.log_reference_length', 12)],
+        ];
+
         $reference = config('pay-pocket.reference_string_prefix', '');
         $reference .= isset($refGen[0], $refGen[1])
             ? $refGen[0]::{$refGen[1]}(...$refGen[2] ?? [])
