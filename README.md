@@ -55,7 +55,7 @@ php artisan vendor:publish --tag="config"
 
 This command will automatically publish the `pay-pocket.php` config file and also `WalletEnums.php` file into your application's `config` and `app/Enums` directories respectively.
 
-## Updating
+## Updating to ^2.0.0
 
 If updating to version `^2.0.0`, new migration and config files have been added to support the new [Transaction Notes Feature](#transaction-notes-8)
 
