@@ -22,9 +22,11 @@ trait HasWallet
     }
 
     /**
-     *  Get User's Wallet Balance
+     * Get User's Wallet Balance
+     *
+     * @return int|float
      */
-    public function getWalletBalanceAttribute()
+    public function getWalletBalanceAttribute(): int|float
     {
 
         $totalBalance = 0;
@@ -39,23 +41,30 @@ trait HasWallet
         }
 
         return $totalBalance;
-
     }
 
     /**
      *  Check if User's wallet balance is more than given value
+     *
+     * @param int|float $value
+     *
+     * @return bool
      */
-    public function hasSufficientBalance($value): bool
+    public function hasSufficientBalance(int|float $value): bool
     {
         return (int) $this->walletBalance >= (int) $value;
     }
 
+
     /**
      * Get the balance of a specific wallet type.
      *
+     *
+     * @param string $walletType
+     *
      * @return float|int
      */
-    public function getWalletBalanceByType(string $walletType)
+    public function getWalletBalanceByType(string $walletType): float|int
     {
         if (! WalletEnums::isValid($walletType)) {
             throw new InvalidWalletTypeException("Invalid wallet type '{$walletType}'.");
