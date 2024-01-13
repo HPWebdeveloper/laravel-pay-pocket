@@ -14,7 +14,7 @@ trait HandlesPayment
      * @param ?string $notes
      *
      * @return void
-     * @throws InsufficientBalanceException
+     * @throws \HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException
      */
     public function pay(int|float $orderValue, ?string $notes = null): void
     {

@@ -36,7 +36,7 @@ interface WalletOperations
      * @param int|float $orderValue
      * @param ?string $notes
      *
-     * @throws InsufficientBalanceException
+     * @throws \HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException
      */
     public function pay(int|float $orderValue, ?string $notes = null): void;
 
