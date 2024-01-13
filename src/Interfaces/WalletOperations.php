@@ -32,4 +32,9 @@ interface WalletOperations
      * Deposit an amount to the user's wallet of a specific type.
      */
     public function deposit(string $type, int|float $amount, ?string $notes = null): bool;
+
+    /**
+     * Get user's wallet balance.
+     */
+    public function getWalletBalance(): int|float;
 }

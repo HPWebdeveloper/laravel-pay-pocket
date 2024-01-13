@@ -68,4 +68,9 @@ trait HasWallet
 
         return $wallet->balance;
     }
+
+    public function getWalletBalance(): int|float
+    {
+        return $this->walletBalance;
+    }
 }

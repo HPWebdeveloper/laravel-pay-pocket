@@ -30,7 +30,7 @@ class PocketServices
      */
     public function checkBalance(WalletOperations $user): int|float
     {
-        return $user->walletBalance;
+        return $user->getWalletBalance();
     }
 
     /**
