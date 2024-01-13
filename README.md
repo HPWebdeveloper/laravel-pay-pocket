@@ -57,7 +57,7 @@ This command will automatically publish the `WalletEnums.php` file into your app
 
 ## Updating
 
-If updating from version `<= 1.0.3`, new migration and config files have been added to support the new [Transaction Info Feature](#transaction-info)
+If updating from version `<= 1.0.3`, new migration and config files have been added to support the new [Transaction Info Feature](#transaction-info-8i8)
 
 Follow the [Installation](#installation) Steps 2 and 3 to update your migrations.
 
