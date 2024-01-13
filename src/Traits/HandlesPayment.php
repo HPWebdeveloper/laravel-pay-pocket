@@ -25,6 +25,10 @@ trait HandlesPayment
         DB::transaction(function () use ($orderValue, $notes) {
             $remainingOrderValue = $orderValue;
 
+            /**
+             * @var \Illuminate\Support\Collection<TKey, \HPWebdeveloper\LaravelPayPocket\Models
+             * |\HPWebdeveloper\LaravelPayPocket\Traits\BalanceOperation>  $walletsInOrder
+             */
             $walletsInOrder = $this->wallets()->whereIn('type', $this->walletsInOrder())->get();
 
             foreach ($walletsInOrder as $wallet) {
