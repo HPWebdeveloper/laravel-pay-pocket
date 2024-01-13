@@ -57,7 +57,7 @@ This command will automatically publish the `pay-pocket.php` config file and als
 
 ## Updating to version `^2.0.0`
 
-If updating to version `^2.0.0`, new migration and config files have been added to support the new [Transaction Notes Feature](#transaction-notes-8i8)
+If updating to version `^2.0.0`, new migration and config files have been added to support the new [Transaction Notes Feature](#transaction-notes-8)
 
 Follow the [Installation](#installation) Steps 2 and 3 to update your migrations.
 
