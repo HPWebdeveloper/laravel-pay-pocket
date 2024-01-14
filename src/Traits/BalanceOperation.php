@@ -44,7 +44,6 @@ trait BalanceOperation
 
         $newBalance = $logType === 'dec' ? $currentBalance - $value : $currentBalance + $value;
 
-        /** @var \Illuminate\Database\Eloquent\Model $this */
         $this->createdLog = $this->logs()->create([
             'wallet_name' => $this->type->value,
             'from' => $currentBalance,
