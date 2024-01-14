@@ -68,12 +68,12 @@ trait BalanceOperation
         $length = config('pay-pocket.log_reference_length');
         $prefix = config('pay-pocket.log_reference_prefix');
 
-        if (!is_callable([$className, $methodName])) {
+        if (! is_callable([$className, $methodName])) {
             throw new InvalidArgumentException('Invalid configuration: The combination of log_reference_generator_class and log_reference_generator_method is not callable.');
         }
 
         $reference = call_user_func([$className, $methodName], $length);
 
-        return $prefix . $reference;
+        return $prefix.$reference;
     }
 }
