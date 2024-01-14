@@ -2,24 +2,41 @@
 
 namespace HPWebdeveloper\LaravelPayPocket\Services;
 
+use HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException;
+use HPWebdeveloper\LaravelPayPocket\Interfaces\WalletOperations;
+
 class PocketServices
 {
-    public function deposit($user, $type, $amount, $notes = null)
+    /**
+     * Deposit an amount to the user's wallet of a specific type.
+     */
+    public function deposit(WalletOperations $user, string $type, int|float $amount, ?string $notes = null): bool
     {
         return $user->deposit($type, $amount, $notes);
     }
 
-    public function pay($user, $orderValue, $notes = null)
+    /**
+     * Pay the order value from the user's wallets.
+     *
+     * @throws InsufficientBalanceException
+     */
+    public function pay(WalletOperations $user, int|float $orderValue, ?string $notes = null): void
     {
-        return $user->pay($orderValue, $notes);
+        $user->pay($orderValue, $notes);
     }
 
-    public function checkBalance($user)
+    /**
+     * Get the balance of the user.
+     */
+    public function checkBalance(WalletOperations $user): int|float
     {
-        return $user->walletBalance;
+        return $user->getWalletBalance();
     }
 
-    public function walletBalanceByType($user, $type)
+    /**
+     * Get the balance of a specific wallet type.
+     */
+    public function walletBalanceByType(WalletOperations $user, string $type): int|float
     {
         return $user->getWalletBalanceByType($type);
     }

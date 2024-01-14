@@ -11,8 +11,9 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements WalletOperations
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
     use ManagesWallet;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
