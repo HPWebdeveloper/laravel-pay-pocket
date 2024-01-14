@@ -2,11 +2,12 @@
 
 namespace HPWebdeveloper\LaravelPayPocket\Traits;
 
-use Illuminate\Support\Str;
+use HPWebdeveloper\LaravelPayPocket\Models\WalletsLog;
+use InvalidArgumentException;
 
 trait BalanceOperation
 {
-    protected $createdLog;
+    protected WalletsLog $createdLog;
 
     /**
      * Check if Balance is more than zero.
@@ -18,8 +19,6 @@ trait BalanceOperation
 
     /**
      * Decrement Balance and create a log entry.
-     *
-     * @param  ?string  $notes
      */
     public function decrementAndCreateLog(int|float $value, ?string $notes = null): void
     {
@@ -29,8 +28,6 @@ trait BalanceOperation
 
     /**
      * Increment Balance and create a log entry.
-     *
-     * @param  ?string  $notes
      */
     public function incrementAndCreateLog(int|float $value, ?string $notes = null): void
     {
@@ -40,8 +37,6 @@ trait BalanceOperation
 
     /**
      * Create a new log record
-     *
-     * @param  ?string  $notes
      */
     protected function createLog(string $logType, int|float $value, ?string $notes = null): void
     {
@@ -49,29 +44,36 @@ trait BalanceOperation
 
         $newBalance = $logType === 'dec' ? $currentBalance - $value : $currentBalance + $value;
 
-        $refGen = config('pay-pocket.log_reference_generator', [
-            Str::class, 'random', [config('pay-pocket.log_reference_length', 12)],
-        ]);
-        $refGen = [
-            Str::class, 'random', [config('pay-pocket.log_reference_length', 12)],
-        ];
-
-        $reference = config('pay-pocket.reference_string_prefix', '');
-        $reference .= isset($refGen[0], $refGen[1])
-            ? $refGen[0]::{$refGen[1]}(...$refGen[2] ?? [])
-            : Str::random(config('pay-pocket.log_reference_length', 12));
-
         $this->createdLog = $this->logs()->create([
             'wallet_name' => $this->type->value,
             'from' => $currentBalance,
             'to' => $newBalance,
             'type' => $logType,
-            'ip' => \Request::ip(),
+            'ip' => request()->ip(),
             'value' => $value,
             'notes' => $notes,
-            'reference' => $reference,
+            'reference' => $this->generateReference(),
         ]);
 
         $this->createdLog->changeStatus('Done');
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    protected function generateReference(): string
+    {
+        $className = config('pay-pocket.log_reference_generator_class');
+        $methodName = config('pay-pocket.log_reference_generator_method');
+        $length = config('pay-pocket.log_reference_length');
+        $prefix = config('pay-pocket.log_reference_prefix');
+
+        if (! is_callable([$className, $methodName])) {
+            throw new InvalidArgumentException('Invalid configuration: The combination of log_reference_generator_class and log_reference_generator_method is not callable.');
+        }
+
+        $reference = call_user_func([$className, $methodName], $length);
+
+        return $prefix.$reference;
     }
 }
