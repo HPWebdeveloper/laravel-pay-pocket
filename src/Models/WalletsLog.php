@@ -32,7 +32,7 @@ class WalletsLog extends Model
         return $this->morphTo();
     }
 
-    public function changeStatus($status)
+    public function changeStatus($status): bool
     {
         $this->status = $status;
 

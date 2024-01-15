@@ -43,7 +43,7 @@ test('deposit two times, the second time to invalid wallet type should throw exc
 
 })->throws(InvalidWalletTypeException::class);
 
-test('insufficent balance should throw exception', function () {
+test('insufficient balance should throw exception', function () {
 
     $user = User::factory()->create();
 

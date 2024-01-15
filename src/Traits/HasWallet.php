@@ -8,11 +8,12 @@ use HPWebdeveloper\LaravelPayPocket\Exceptions\WalletNotFoundException;
 use HPWebdeveloper\LaravelPayPocket\Models\Wallet;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
+/**
+ * @property int|float $walletBalance
+ */
 trait HasWallet
 {
     use GetWallets;
-
-    // you should eager load Wallets
 
     /**
      *  Has Many Relation with Wallet Model
@@ -27,18 +28,17 @@ trait HasWallet
      */
     public function getWalletBalanceAttribute(): int|float
     {
-        $totalBalance = 0;
+        return collect($this->walletsInOrder())
+            ->reduce(function ($carry, $walletInOrder) {
+                $walletEnumType = WalletEnums::tryFrom($walletInOrder);
+                $wallet = $this->wallets()->where('type', $walletEnumType)->first();
 
-        foreach ($this->walletsInOrder() as $walletInOrder) {
-            $walletEnumType = WalletEnums::tryFrom($walletInOrder);
-            $wallet = $this->wallets()->where('type', $walletEnumType)->first();
+                if ($wallet) {
+                    return $carry + $wallet->balance;
+                }
 
-            if ($wallet) {
-                $totalBalance += $wallet->balance;
-            }
-        }
-
-        return $totalBalance;
+                return $carry;
+            }, 0);
     }
 
     /**
