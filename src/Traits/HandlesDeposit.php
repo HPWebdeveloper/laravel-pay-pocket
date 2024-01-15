@@ -44,12 +44,11 @@ trait HandlesDeposit
      */
     private function getDepositableTypes(): array
     {
-        $depositableTypes = [];
-        foreach (WalletEnums::cases() as $enumCase) {
-            $depositableTypes[$enumCase->value] = strtolower($enumCase->name);
-        }
-
-        return $depositableTypes;
+        return collect(WalletEnums::cases())
+            ->mapWithKeys(function ($enumCase) {
+                return [$enumCase->value => strtolower($enumCase->name)];
+            })
+            ->toArray();
     }
 
     /**
