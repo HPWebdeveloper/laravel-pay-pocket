@@ -49,7 +49,7 @@ trait BalanceOperation
 
         $newBalance = $logType === 'dec' ? $currentBalance - $value : $currentBalance + $value;
 
-        $this->createdLog = $this->logs()->create([
+        $walletLog = (new WalletsLog())->fill([
             'wallet_name' => $this->type->value,
             'from' => $currentBalance,
             'to' => $newBalance,
@@ -60,7 +60,9 @@ trait BalanceOperation
             'reference' => $this->generateReference(),
         ]);
 
-        $this->createdLog->changeStatus('Done');
+        $walletLog->status = 'Done';
+
+        $this->createdLog = $this->logs()->save($walletLog);
     }
 
     /**
