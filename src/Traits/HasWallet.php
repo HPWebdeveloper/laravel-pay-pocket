@@ -31,7 +31,7 @@ trait HasWallet
         return collect($this->walletsInOrder())
             ->reduce(function ($carry, $walletInOrder) {
                 $walletEnumType = WalletEnums::tryFrom($walletInOrder);
-                $wallet = $this->wallets()->where('type', $walletEnumType)->first();
+                $wallet = $this->wallets()->type($walletEnumType)->first();
 
                 if ($wallet) {
                     return $carry + $wallet->balance;
@@ -60,7 +60,9 @@ trait HasWallet
             throw new InvalidWalletTypeException("Invalid wallet type '{$walletType}'.");
         }
 
-        $wallet = $this->wallets()->where('type', $walletType)->first();
+        $walletEnumType = WalletEnums::tryFrom($walletType);
+
+        $wallet = $this->wallets()->type($walletEnumType)->first();
 
         if (! $wallet) {
             throw new WalletNotFoundException("Wallet of type '{$walletType}' not found.");

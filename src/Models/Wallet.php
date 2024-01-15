@@ -5,6 +5,7 @@ namespace HPWebdeveloper\LaravelPayPocket\Models;
 use App\Enums\WalletEnums;
 use HPWebdeveloper\LaravelPayPocket\Traits\BalanceOperation;
 use HPWebdeveloper\LaravelPayPocket\Traits\Loggable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -14,6 +15,8 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  *
  * @property mixed $balance
  * @property WalletEnums $type
+ *
+ * @method static type(WalletEnums $walletEnumType)
  */
 class Wallet extends Model
 {
@@ -30,5 +33,10 @@ class Wallet extends Model
     public function owner(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function scopeType(Builder $query, WalletEnums $type)
+    {
+        $query->where('type', $type->value);
     }
 }
