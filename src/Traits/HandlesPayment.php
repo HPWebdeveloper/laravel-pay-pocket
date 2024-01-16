@@ -10,7 +10,6 @@ trait HandlesPayment
     /**
      * Pay the order value from the user's wallets.
      *
-     *
      * @throws InsufficientBalanceException
      */
     public function pay(int|float $orderValue, array $allowedWallets = [], ?string $notes = null): void
@@ -22,6 +21,9 @@ trait HandlesPayment
         DB::transaction(function () use ($orderValue, $notes, $allowedWallets) {
             $remainingOrderValue = $orderValue;
 
+            /**
+             * @var \Illuminate\Support\Collection<TKey, \HPWebdeveloper\LaravelPayPocket\Models\Wallet>
+             */
             $walletsInOrder = $this->wallets()->whereIn('type', $this->walletsInOrder())->get();
 
             /**

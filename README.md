@@ -137,7 +137,7 @@ LaravelPayPocket::deposit($user, 'wallet_1', 123.45);
 
 Note: `wallet_1` and `wallet_2` must already be defined in the `WalletEnums`.
 
-#### Transaction Notes ([#8][i8])
+#### Transaction Info ([#8][i8])
 
 When you need to add descriptions for a specific transaction, the `$notes` parameter enables you to provide details explaining the reason behind the transaction.
 
