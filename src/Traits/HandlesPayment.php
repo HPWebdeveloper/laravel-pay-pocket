@@ -38,7 +38,7 @@ trait HandlesPayment
              * @var BalanceOperation $wallet
              */
             foreach ($walletsInOrder as $wallet) {
-                if (! $wallet || ! $wallet->hasBalance() || !$useWallet($wallet->type)) {
+                if (! $wallet || ! $wallet->hasBalance() || ! $useWallet($wallet->type)) {
                     continue;
                 }
 
