@@ -29,6 +29,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('balance_logs');
+        Schema::dropIfExists('wallets_logs');
     }
 };
