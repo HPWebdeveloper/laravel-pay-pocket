@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-pay-pocket` will be documented in this file.
 
+## 2.0.1 - 2024-04-12
+
+### What's Changed
+
+* Update README.md by @3m1n3nc3 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/15
+* Fix/style fix by @SSEsmaeeli in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/17
+* Types by @HPWebdeveloper in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/16
+
+**Full Changelog**: https://github.com/HPWebdeveloper/laravel-pay-pocket/compare/2.0.0...2.0.1
+
 ## v2.0.0 - 2024-01-12
 
 - [2.x] Add Transaction note by @3m1n3nc3 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/10
