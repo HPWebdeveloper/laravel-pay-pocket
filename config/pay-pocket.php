@@ -2,7 +2,9 @@
 
 // config for HPWebdeveloper/LaravelPayPocket
 
-/*
+return [
+
+    /*
     |--------------------------------------------------------------------------
     | Reference Generator Configuration
     |--------------------------------------------------------------------------
