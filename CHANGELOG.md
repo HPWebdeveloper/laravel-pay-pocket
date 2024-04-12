@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-pay-pocket` will be documented in this file.
 
+## 2.0.3 - 2024-04-12
+
+### What's Changed
+
+* Update create_wallets_logs_table.php.stub by @josecarpio99 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/21
+
+### New Contributors
+
+* @josecarpio99 made their first contribution in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/21
+
+**Full Changelog**: https://github.com/HPWebdeveloper/laravel-pay-pocket/compare/2.0.2...2.0.3
+
 ## 2.0.2 - 2024-04-12
 
 ### What's Changed
