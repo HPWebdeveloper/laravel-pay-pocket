@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-pay-pocket` will be documented in this file.
 
+## 2.0.2 - 2024-04-12
+
+### What's Changed
+
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/20
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.0.0 by @dependabot in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/23
+
+**Full Changelog**: https://github.com/HPWebdeveloper/laravel-pay-pocket/compare/2.0.1...2.0.2
+
 ## 2.0.1 - 2024-04-12
 
 ### What's Changed
