@@ -1,8 +1,8 @@
 <?php
 
-return [
+// config for HPWebdeveloper/LaravelPayPocket
 
-    /*
+/*
     |--------------------------------------------------------------------------
     | Reference Generator Configuration
     |--------------------------------------------------------------------------
@@ -18,11 +18,10 @@ return [
     | This is how it works in the code:
     | Illuminate\Support\Str::random(12)
     |
-    */
-
+*/
+return [
     'log_reference_length' => 12,
     'log_reference_prefix' => '',
     'log_reference_generator_class' => Illuminate\Support\Str::class,
     'log_reference_generator_method' => 'random',
-
 ];
