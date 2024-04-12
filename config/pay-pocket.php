@@ -3,14 +3,15 @@
 // config for HPWebdeveloper/LaravelPayPocket
 
 /**
- * The 'log_reference_generator' should be a numeric array with three elements:
- * - The first element should be the fully qualified name of a class that contains static methods.
- *   This includes the namespace of the class.
- * - The second element should be the name of a static method available in the specified class.
- * - The third element should be an array of optional parameters to pass to the static method.
- * For example, the default generator is configured as follows:
- * [\Illuminate\Support\Str::class, 'random', [12]], which uses the 'random' static method
- * from the \Illuminate\Support\Str class with 12 as a parameter.
+ * Configuration for generating log reference strings.
+ *
+ * @param int    $log_reference_length           The length of the generated string.
+ * @param string $log_reference_prefix            The prefix for the generated string.
+ * @param string $log_reference_generator_class  The fully qualified name of the class containing static methods for generation.
+ * @param string $log_reference_generator_method The name of the static method available in the generator class.
+ *
+ * This is how it works in the code:
+ * Illuminate\Support\Str::random(12)
  */
 return [
     'log_reference_length' => 12,
