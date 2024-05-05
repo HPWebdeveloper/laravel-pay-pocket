@@ -10,6 +10,14 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * HPWebdeveloper\LaravelPayPocket\Models\WalletsLog
  *
  * @property string $status
+ * @property int|float $from
+ * @property int|float $to
+ * @property string $type
+ * @property string $ip
+ * @property int|float $value
+ * @property string $wallet_name
+ * @property string $notes
+ * @property string $reference
  */
 class WalletsLog extends Model
 {

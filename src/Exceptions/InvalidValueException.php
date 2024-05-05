@@ -3,16 +3,11 @@
 namespace HPWebdeveloper\LaravelPayPocket\Exceptions;
 
 use Exception;
+use Throwable;
 
 class InvalidValueException extends Exception
 {
-    /**
-     * Construct the exception.
-     *
-     * @param  string  $message
-     * @param  int  $code
-     */
-    public function __construct($message = 'Invalie value to deposit', $code = 0, ?\Throwable $previous = null)
+    public function __construct(string $message = 'Invalie value to deposit', int $code = 0, ?Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }
