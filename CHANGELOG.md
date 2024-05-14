@@ -2,6 +2,37 @@
 
 All notable changes to `laravel-pay-pocket` will be documented in this file.
 
+## 2.0.3 - 2024-04-12
+
+### What's Changed
+
+* Update create_wallets_logs_table.php.stub by @josecarpio99 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/21
+
+### New Contributors
+
+* @josecarpio99 made their first contribution in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/21
+
+**Full Changelog**: https://github.com/HPWebdeveloper/laravel-pay-pocket/compare/2.0.2...2.0.3
+
+## 2.0.2 - 2024-04-12
+
+### What's Changed
+
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/20
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.0.0 by @dependabot in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/23
+
+**Full Changelog**: https://github.com/HPWebdeveloper/laravel-pay-pocket/compare/2.0.1...2.0.2
+
+## 2.0.1 - 2024-04-12
+
+### What's Changed
+
+* Update README.md by @3m1n3nc3 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/15
+* Fix/style fix by @SSEsmaeeli in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/17
+* Types by @HPWebdeveloper in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/16
+
+**Full Changelog**: https://github.com/HPWebdeveloper/laravel-pay-pocket/compare/2.0.0...2.0.1
+
 ## v2.0.0 - 2024-01-12
 
 - [2.x] Add Transaction note by @3m1n3nc3 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/10
