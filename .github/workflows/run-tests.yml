@@ -75,7 +75,6 @@ jobs:
       - name: Install dependencies
         run: |
           composer require "laravel/framework:11.*" "orchestra/testbench:9.*" "nesbot/carbon:^3.0" --dev --no-interaction --no-update
-          composer require "nunomaduro/collision:^6.1" --dev --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: List Installed Dependencies
