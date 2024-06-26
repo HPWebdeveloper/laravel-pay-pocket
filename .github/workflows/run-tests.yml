@@ -23,6 +23,8 @@ jobs:
           - laravel: 11.*
             testbench: 9.*
             carbon: ^3.0
+            nunomaduro/collision: ^7.10
+            laravel/tinker: ^2.10
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
