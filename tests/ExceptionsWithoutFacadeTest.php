@@ -59,8 +59,5 @@ test('User does not have such wallet should throw exception', function () {
 
     $user = User::factory()->create();
 
-    $type = 'wallet_1';
-
     $user->getWalletBalanceByType('wallet_2');
-
 })->throws(WalletNotFoundException::class);
