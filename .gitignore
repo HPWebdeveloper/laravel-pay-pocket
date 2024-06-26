@@ -1,6 +1,7 @@
 .idea
 .phpunit.cache
 build
+.DS_Store
 composer.lock
 coverage
 docs
