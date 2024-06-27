@@ -24,10 +24,10 @@
 
 ### Support Policy
 
-| Version | Laravel | PHP           | Release date | End of improvements | End of support |
-| ------- | ------- | ------------- | ------------ | ------------------- | -------------- |
-| 1.x     | ^10.0   | 8.1, 8.2, 8.3 | Nov 30, 2023 | Mar 1, 2024         |                |
-| x.x     |         |               |              |                     |                |
+| Version | Laravel      | PHP         | Release date | End of improvements | End of support |
+|---------|--------------|-------------|-------------| ------------------- | -------------- |
+| 1.x     | ^10.0        | 8.1, 8.2, 8.3 | Nov 30, 2023 | Mar 1, 2024         |                |
+| 2.x     | ^10.0, ^11.0 |8.2, 8.3|              |                     |                |
 
 ## Installation:
 
