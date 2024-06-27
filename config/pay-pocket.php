@@ -12,12 +12,12 @@ return [
     | This configuration allows you to customize the generation of log reference strings
     | within the LaravelPayPocket package.
     |
-    | - [array]         log_reference_params: The parameters to pass to the log reference generator.
-    | - [string]        log_reference_prefix: The prefix for the generated reference string.
-    | - [class-string]  log_reference_generator_class: The fully qualified name of the class containing static methods for generation.
-    | - [string]        log_reference_generator_method: The name of the static method available in the generator class.
+    | - [array]         log_reference_params: An array of parameters to pass to the log_reference_generator_method.
+    | - [string]        log_reference_prefix: Prefix for the generated reference string.
+    | - [class-string]  log_reference_generator_class: Fully qualified name of the class containing static methods for generation.
+    | - [string]        log_reference_generator_method: Name of the static method available in the generator class.
     |
-    | This is how it works by default in the code:
+    | By default, the following generator is set up:
     | Illuminate\Support\Str::random(12)
     |
     */
