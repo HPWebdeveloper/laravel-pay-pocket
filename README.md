@@ -17,7 +17,7 @@
 -   **Vendor**: hpwebdeveloper
 -   **Package**: laravel-pay-pocket
 -   **Alias name**: Laravel PPP (Laravel Pay Pocket Package)
--   **Version**: `1.x`
+-   **Version**: `2.x`
 -   **PHP Version**: 8.1+
 -   **Laravel Version**: `10.x`
 -   **[Composer](https://getcomposer.org/):** `composer require hpwebdeveloper/laravel-pay-pocket`
