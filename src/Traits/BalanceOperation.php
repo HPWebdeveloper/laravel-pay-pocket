@@ -65,7 +65,7 @@ trait BalanceOperation
     {
         $className = config('pay-pocket.log_reference_generator_class');
         $methodName = config('pay-pocket.log_reference_generator_method');
-        $params = (array)config('pay-pocket.log_reference_params', [12]);
+        $params = (array) config('pay-pocket.log_reference_params', [12]);
         $prefix = config('pay-pocket.log_reference_prefix');
 
         if (! is_callable([$className, $methodName])) {
@@ -74,6 +74,6 @@ trait BalanceOperation
 
         $reference = call_user_func([$className, $methodName], ...$params);
 
-        return $prefix . $reference;
+        return $prefix.$reference;
     }
 }
