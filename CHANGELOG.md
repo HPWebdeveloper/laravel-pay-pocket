@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-pay-pocket` will be documented in this file.
 
+## 2.2.0 - 2024-06-27
+
+### What's Changed
+
+* Update: Change log_reference_length to log_reference_params by @3m1n3nc3 in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/34
+* Modify comments by @HPWebdeveloper in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/36
+
+**Full Changelog**: https://github.com/HPWebdeveloper/laravel-pay-pocket/compare/2.1.0...2.2.0
+
 ## 2.1.0 - 2024-06-27
 
 ### What's Changed
