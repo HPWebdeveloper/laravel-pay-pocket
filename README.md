@@ -199,7 +199,7 @@ you will discover a variety of exceptions tailored to address each scenario of i
 ### Log
 
 A typical `wallets_logs` table.
-![Laravel Pay Pocket Log](https://github.com/HPWebdeveloper/laravel-pay-pocket/assets/16323354/a242d335-8bd2-4af1-aa38-4e95b8870941)
+![Laravel Pay Pocket Log](https://github.com/HPWebdeveloper/laravel-pay-pocket/assets/16323354/0d7f2237-88e1-4ac0-a4f2-ac200bad9273)
 
 ## Testing
 
