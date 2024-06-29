@@ -3,6 +3,7 @@
 namespace HPWebdeveloper\LaravelPayPocket\Interfaces;
 
 use HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException;
+use HPWebdeveloper\LaravelPayPocket\Models\WalletsLog;
 
 interface WalletOperations
 {
