@@ -11,7 +11,7 @@ trait HandlesPayment
     /**
      * Pay the order value from the user's wallets.
      *
-     * @param  ?string  $notes
+     *
      * @return \Illuminate\Support\Collection<TKey,WalletsLog>
      *
      * @throws InsufficientBalanceException

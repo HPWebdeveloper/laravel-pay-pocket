@@ -13,6 +13,7 @@ trait HandlesDeposit
     /**
      * Deposit an amount to the user's wallet of a specific type.
      *
+     *
      * @throws InvalidDepositException
      * @throws InvalidValueException
      * @throws InvalidWalletTypeException
