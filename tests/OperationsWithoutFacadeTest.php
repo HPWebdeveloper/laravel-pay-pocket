@@ -130,3 +130,15 @@ test('transaction reference is added to wallet log', function () {
 
     expect(WalletsLog::whereNotNull('reference')->exists())->toBe(true);
 });
+
+test('Payment returns log', function () {
+    $user = User::factory()->create();
+
+    $type = 'wallet_2';
+
+    $user->deposit($type, 234.56);
+
+    $log = $user->pay(100.16);
+
+    expect($log->sum('value'))->toBe(100.16);
+});

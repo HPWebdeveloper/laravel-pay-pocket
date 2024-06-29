@@ -18,11 +18,16 @@ class PocketServices
     /**
      * Pay the order value from the user's wallets.
      *
+     * @param WalletOperations $user
+     * @param int|float $orderValue
+     * @param ?string $notes
+     *
      * @throws InsufficientBalanceException
+     * @return \Illuminate\Support\Collection<TKey,WalletsLog>
      */
-    public function pay(WalletOperations $user, int|float $orderValue, ?string $notes = null): void
+    public function pay(WalletOperations $user, int|float $orderValue, ?string $notes = null): \Illuminate\Support\Collection
     {
-        $user->pay($orderValue, $notes);
+        return $user->pay($orderValue, $notes);
     }
 
     /**

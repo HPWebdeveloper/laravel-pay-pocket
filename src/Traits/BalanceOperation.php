@@ -20,19 +20,21 @@ trait BalanceOperation
     /**
      * Decrement Balance and create a log entry.
      */
-    public function decrementAndCreateLog(int|float $value, ?string $notes = null): void
+    public function decrementAndCreateLog(int|float $value, ?string $notes = null): WalletsLog
     {
         $this->createLog('dec', $value, $notes);
         $this->decrement('balance', $value);
+        return $this->createdLog;
     }
 
     /**
      * Increment Balance and create a log entry.
      */
-    public function incrementAndCreateLog(int|float $value, ?string $notes = null): void
+    public function incrementAndCreateLog(int|float $value, ?string $notes = null): WalletsLog
     {
         $this->createLog('inc', $value, $notes);
         $this->increment('balance', $value);
+        return $this->createdLog;
     }
 
     /**
@@ -68,7 +70,7 @@ trait BalanceOperation
         $params = (array)config('pay-pocket.log_reference_params', [12]);
         $prefix = config('pay-pocket.log_reference_prefix');
 
-        if (! is_callable([$className, $methodName])) {
+        if (!is_callable([$className, $methodName])) {
             throw new InvalidArgumentException('Invalid configuration: The combination of log_reference_generator_class and log_reference_generator_method is not callable.');
         }
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @see \HPWebdeveloper\LaravelPayPocket\Services\PocketServices
  *
- * @method static void pay(WalletOperations $user, int|float $orderValue, ?string $notes = null)
+ * @method static \Illuminate\Support\Collection pay(WalletOperations $user, int|float $orderValue, ?string $notes = null)
  * @method static bool deposit(WalletOperations $user, string $type, int|float $amount, ?string $notes = null)
  * @method static int|float checkBalance(WalletOperations $user)
  * @method static int|float walletBalanceByType(WalletOperations $user, string $type)
