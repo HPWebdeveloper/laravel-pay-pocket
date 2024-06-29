@@ -11,15 +11,14 @@ trait HandlesPayment
     /**
      * Pay the order value from the user's wallets.
      *
-     * @param int|float $orderValue
-     * @param ?string $notes
+     * @param  ?string  $notes
+     * @return \Illuminate\Support\Collection<TKey,WalletsLog>
      *
      * @throws InsufficientBalanceException
-     * @return \Illuminate\Support\Collection<TKey,WalletsLog>
      */
     public function pay(int|float $orderValue, ?string $notes = null): \Illuminate\Database\Eloquent\Collection
     {
-        if (!$this->hasSufficientBalance($orderValue)) {
+        if (! $this->hasSufficientBalance($orderValue)) {
             throw new InsufficientBalanceException('Insufficient balance to cover the order.');
         }
 
@@ -34,7 +33,7 @@ trait HandlesPayment
             $logs = (new WalletsLog())->newCollection();
 
             foreach ($walletsInOrder as $wallet) {
-                if (!$wallet || !$wallet->hasBalance()) {
+                if (! $wallet || ! $wallet->hasBalance()) {
                     continue;
                 }
 
