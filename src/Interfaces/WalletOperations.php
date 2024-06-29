@@ -25,10 +25,11 @@ interface WalletOperations
     /**
      * Pay the order value from the user's wallets.
      *
-     * @param  ?string  $notes
-     * @return \Illuminate\Support\Collection<TKey,WalletsLog>
+     * @param int|float $orderValue
+     * @param ?string $notes
      *
      * @throws InsufficientBalanceException
+     * @return \Illuminate\Support\Collection<TKey,WalletsLog>
      */
     public function pay(int|float $orderValue, ?string $notes = null): \Illuminate\Support\Collection;
 

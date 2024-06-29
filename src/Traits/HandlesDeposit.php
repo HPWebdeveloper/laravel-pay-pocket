@@ -21,7 +21,7 @@ trait HandlesDeposit
     {
         $depositable = $this->getDepositableTypes();
 
-        if (! $this->isRequestValid($type, $depositable)) {
+        if (!$this->isRequestValid($type, $depositable)) {
             throw new InvalidDepositException('Invalid deposit request.');
         }
 
@@ -58,7 +58,7 @@ trait HandlesDeposit
      */
     private function isRequestValid($type, array $depositable): bool
     {
-        if (! array_key_exists($type, $depositable)) {
+        if (!array_key_exists($type, $depositable)) {
             throw new InvalidWalletTypeException('Invalid deposit type.');
         }
 
