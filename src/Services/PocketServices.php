@@ -4,6 +4,7 @@ namespace HPWebdeveloper\LaravelPayPocket\Services;
 
 use HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException;
 use HPWebdeveloper\LaravelPayPocket\Interfaces\WalletOperations;
+use HPWebdeveloper\LaravelPayPocket\Models\WalletsLog;
 
 class PocketServices
 {
