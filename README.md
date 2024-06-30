@@ -33,10 +33,11 @@
 
 ### Support Policy
 
-| Version | Laravel      | PHP         | Release date  | End of improvements | End of support |
-|---------|--------------|-------------|---------------|---------------------| -------------- |
-| 1.x     | ^10.0        | 8.1, 8.2, 8.3 | Nov 30, 2023  | Mar 1, 2024         |                |
-| 2.x     | ^10.0, ^11.0 |8.2, 8.3| June 27, 2024 | January 30, 2025    |                |
+| Version                                         | Laravel      | PHP         | Release date  | End of improvements | End of support |
+|-------------------------------------------------|--------------|-------------|---------------|---------------------| -------------- |
+| 1.x                                             | ^10.0        | 8.1, 8.2, 8.3 | Nov 30, 2023  | Mar 1, 2024         |                |
+| 2.x                                             | ^10.0, ^11.0 |8.2, 8.3| June 27, 2024 | January 30, 2025    |                |
+| 3.x  (atomic operations and restricted wallets) | ^11.0 |8.2, 8.3| comming soon  |    |                |
 
 ## Installation:
 
