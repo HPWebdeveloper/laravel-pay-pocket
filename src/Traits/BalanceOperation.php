@@ -3,6 +3,7 @@
 namespace HPWebdeveloper\LaravelPayPocket\Traits;
 
 use HPWebdeveloper\LaravelPayPocket\Models\WalletsLog;
+use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
 trait BalanceOperation
@@ -22,8 +23,10 @@ trait BalanceOperation
      */
     public function decrementAndCreateLog(int|float $value, ?string $notes = null): void
     {
-        $this->createLog('dec', $value, $notes);
-        $this->decrement('balance', $value);
+        DB::transaction(function () use ($value, $notes) {
+            $this->createLog('dec', $value, $notes);
+            $this->decrement('balance', $value);
+        });
     }
 
     /**
@@ -31,8 +34,10 @@ trait BalanceOperation
      */
     public function incrementAndCreateLog(int|float $value, ?string $notes = null): void
     {
-        $this->createLog('inc', $value, $notes);
-        $this->increment('balance', $value);
+        DB::transaction(function () use ($value, $notes) {
+            $this->createLog('inc', $value, $notes);
+            $this->increment('balance', $value);
+        });
     }
 
     /**
@@ -44,7 +49,7 @@ trait BalanceOperation
 
         $newBalance = $logType === 'dec' ? $currentBalance - $value : $currentBalance + $value;
 
-        $this->createdLog = $this->logs()->create([
+        $walletLog = (new WalletsLog())->fill([
             'wallet_name' => $this->type->value,
             'from' => $currentBalance,
             'to' => $newBalance,
@@ -55,7 +60,9 @@ trait BalanceOperation
             'reference' => $this->generateReference(),
         ]);
 
-        $this->createdLog->changeStatus('Done');
+        $walletLog->status = 'Done';
+
+        $this->createdLog = $this->logs()->save($walletLog);
     }
 
     /**
