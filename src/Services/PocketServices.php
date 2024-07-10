@@ -20,9 +20,9 @@ class PocketServices
      *
      * @throws InsufficientBalanceException
      */
-    public function pay(WalletOperations $user, int|float $orderValue, ?string $notes = null): void
+    public function pay(WalletOperations $user, int|float $orderValue, array $allowedWallets = [], ?string $notes = null): void
     {
-        $user->pay($orderValue, $notes);
+        $user->pay($orderValue, $allowedWallets, $notes);
     }
 
     /**
