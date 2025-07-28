@@ -4,6 +4,7 @@ namespace HPWebdeveloper\LaravelPayPocket\Services;
 
 use HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException;
 use HPWebdeveloper\LaravelPayPocket\Interfaces\WalletOperations;
+use HPWebdeveloper\LaravelPayPocket\Models\WalletsLog;
 
 class PocketServices
 {
@@ -18,11 +19,14 @@ class PocketServices
     /**
      * Pay the order value from the user's wallets.
      *
+     * @param  ?string  $notes
+     * @return \Illuminate\Support\Collection<TKey,WalletsLog>
+     *
      * @throws InsufficientBalanceException
      */
-    public function pay(WalletOperations $user, int|float $orderValue, ?string $notes = null): void
+    public function pay(WalletOperations $user, int|float $orderValue, ?string $notes = null): \Illuminate\Support\Collection
     {
-        $user->pay($orderValue, $notes);
+        return $user->pay($orderValue, $notes);
     }
 
     /**
