@@ -26,7 +26,7 @@ interface WalletOperations
      *
      * @throws InsufficientBalanceException
      */
-    public function pay(int|float $orderValue, ?string $notes = null): void;
+    public function pay(int|float $orderValue, array $allowedWallets = [], ?string $notes = null): void;
 
     /**
      * Deposit an amount to the user's wallet of a specific type.
