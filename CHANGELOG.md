@@ -2,6 +2,23 @@
 
 All notable changes to `laravel-pay-pocket` will be documented in this file.
 
+## 2.3.0 - 2025-12-03
+
+### What's Changed
+
+* Add feature: pay() method return collection by : @3m1n3nc3
+* Update readme by @HPWebdeveloper in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/35
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot[bot] in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/38
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot[bot] in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/40
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot[bot] in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/41
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/43
+* Bump aglipanci/laravel-pint-action from 2.5 to 2.6 by @dependabot[bot] in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/45
+* pay() method returns collection instead of void by @HPWebdeveloper in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/49
+* Bump actions/checkout from 4 to 6 by @dependabot[bot] in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/48
+* Bump stefanzweifel/git-auto-commit-action from 5 to 7 by @dependabot[bot] in https://github.com/HPWebdeveloper/laravel-pay-pocket/pull/47
+
+**Full Changelog**: https://github.com/HPWebdeveloper/laravel-pay-pocket/compare/2.2.0...2.3.0
+
 ## 2.2.0 - 2024-06-27
 
 ### What's Changed
