@@ -30,7 +30,7 @@ trait HandlesPayment
              */
             $walletsInOrder = $this->wallets()->whereIn('type', $this->walletsInOrder())->get();
 
-            $logs = (new WalletsLog())->newCollection();
+            $logs = (new WalletsLog)->newCollection();
 
             foreach ($walletsInOrder as $wallet) {
                 if (! $wallet || ! $wallet->hasBalance()) {
