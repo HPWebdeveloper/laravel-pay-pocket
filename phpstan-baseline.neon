@@ -1,0 +1,67 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method HPWebdeveloper\\LaravelPayPocket\\Interfaces\\WalletOperations\:\:pay\(\) has invalid return type HPWebdeveloper\\LaravelPayPocket\\Interfaces\\TKey\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Interfaces/WalletOperations.php
+
+		-
+			message: '#^Type HPWebdeveloper\\LaravelPayPocket\\Interfaces\\TKey in generic type Illuminate\\Support\\Collection\<HPWebdeveloper\\LaravelPayPocket\\Interfaces\\TKey, HPWebdeveloper\\LaravelPayPocket\\Models\\WalletsLog\> in PHPDoc tag @return is not subtype of template type TKey of \(int\|string\) of class Illuminate\\Support\\Collection\.$#'
+			identifier: generics.notSubtype
+			count: 1
+			path: src/Interfaces/WalletOperations.php
+
+		-
+			message: '#^Property HPWebdeveloper\\LaravelPayPocket\\Models\\Wallet\:\:\$createdLog \(HPWebdeveloper\\LaravelPayPocket\\Models\\WalletsLog\) does not accept Illuminate\\Database\\Eloquent\\Model\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Models/Wallet.php
+
+		-
+			message: '#^Method HPWebdeveloper\\LaravelPayPocket\\Services\\PocketServices\:\:pay\(\) has invalid return type HPWebdeveloper\\LaravelPayPocket\\Services\\TKey\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Services/PocketServices.php
+
+		-
+			message: '#^Method HPWebdeveloper\\LaravelPayPocket\\Services\\PocketServices\:\:pay\(\) should return Illuminate\\Support\\Collection\<HPWebdeveloper\\LaravelPayPocket\\Services\\TKey, HPWebdeveloper\\LaravelPayPocket\\Models\\WalletsLog\> but returns Illuminate\\Support\\Collection\<HPWebdeveloper\\LaravelPayPocket\\Interfaces\\TKey, HPWebdeveloper\\LaravelPayPocket\\Models\\WalletsLog\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Services/PocketServices.php
+
+		-
+			message: '#^Type HPWebdeveloper\\LaravelPayPocket\\Services\\TKey in generic type Illuminate\\Support\\Collection\<HPWebdeveloper\\LaravelPayPocket\\Services\\TKey, HPWebdeveloper\\LaravelPayPocket\\Models\\WalletsLog\> in PHPDoc tag @return is not subtype of template type TKey of \(int\|string\) of class Illuminate\\Support\\Collection\.$#'
+			identifier: generics.notSubtype
+			count: 1
+			path: src/Services/PocketServices.php
+
+		-
+			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\GetWallets is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Traits/GetWallets.php
+
+		-
+			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\HandlesDeposit is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Traits/HandlesDeposit.php
+
+		-
+			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\HandlesPayment is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Traits/HandlesPayment.php
+
+		-
+			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\HasWallet is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Traits/HasWallet.php
+
+		-
+			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\ManagesWallet is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Traits/ManagesWallet.php
