@@ -3,6 +3,7 @@
 namespace HPWebdeveloper\LaravelPayPocket\Interfaces;
 
 use HPWebdeveloper\LaravelPayPocket\Exceptions\InsufficientBalanceException;
+use HPWebdeveloper\LaravelPayPocket\Models\WalletsLog;
 
 interface WalletOperations
 {
@@ -24,9 +25,11 @@ interface WalletOperations
     /**
      * Pay the order value from the user's wallets.
      *
+     * @return \Illuminate\Support\Collection<TKey,WalletsLog>
+     *
      * @throws InsufficientBalanceException
      */
-    public function pay(int|float $orderValue, ?string $notes = null): void;
+    public function pay(int|float $orderValue, ?string $notes = null): \Illuminate\Support\Collection;
 
     /**
      * Deposit an amount to the user's wallet of a specific type.

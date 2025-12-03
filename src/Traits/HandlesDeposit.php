@@ -13,6 +13,7 @@ trait HandlesDeposit
     /**
      * Deposit an amount to the user's wallet of a specific type.
      *
+     *
      * @throws InvalidDepositException
      * @throws InvalidValueException
      * @throws InvalidWalletTypeException
@@ -26,7 +27,7 @@ trait HandlesDeposit
         }
 
         if ($amount <= 0) {
-            throw new InvalidValueException();
+            throw new InvalidValueException;
         }
 
         DB::transaction(function () use ($type, $amount, $notes) {

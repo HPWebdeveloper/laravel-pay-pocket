@@ -11,14 +11,13 @@
 
 **Demo:** https://github.com/HPWebdeveloper/demo-pay-pocket
 
-**Videos:** 
+**Videos:**
 
-- [Laravel Pay Pocket Package: Virtual Wallets in Your Project](https://www.youtube.com/watch?v=KoQyURiwsA4)
+-   [Laravel Pay Pocket Package: Virtual Wallets in Your Project](https://www.youtube.com/watch?v=KoQyURiwsA4)
 
-- [Laravel Exceptions: Why and How to Use? Practical Example.](https://www.youtube.com/watch?v=-Sr18w91v8Q)
+-   [Laravel Exceptions: Why and How to Use? Practical Example.](https://www.youtube.com/watch?v=-Sr18w91v8Q)
 
-- [PHP Enums in Laravel: Practical Example from Package](https://www.youtube.com/watch?v=iUOb-3HQtK8)
-
+-   [PHP Enums in Laravel: Practical Example from Package](https://www.youtube.com/watch?v=iUOb-3HQtK8)
 
 **Note:** This package does not handle payments from payment platforms, but instead offers the concept of virtual money, deposit, and withdrawal.
 
@@ -33,11 +32,10 @@
 
 ### Support Policy
 
-| Version                                         | Laravel      | PHP         | Release date  | End of improvements | End of support |
-|-------------------------------------------------|--------------|-------------|---------------|---------------------| -------------- |
-| 1.x                                             | ^10.0        | 8.1, 8.2, 8.3 | Nov 30, 2023  | Mar 1, 2024         |                |
-| 2.x                                             | ^10.0, ^11.0 |8.2, 8.3| June 27, 2024 | January 30, 2025    |                |
-| 3.x  (atomic operations and restricted wallets) | ^11.0 |8.2, 8.3| comming soon  |    |                |
+| Version | Laravel      | PHP           | Release date  | End of improvements | End of support |
+| ------- | ------------ | ------------- | ------------- | ------------------- | -------------- |
+| 1.x     | ^10.0        | 8.1, 8.2, 8.3 | Nov 30, 2023  | Mar 1, 2024         |                |
+| 2.x     | ^10.0, ^11.0 | 8.2, 8.3      | June 27, 2024 | January 30, 2025    |                |
 
 ## Installation:
 
@@ -177,6 +175,71 @@ use HPWebdeveloper\LaravelPayPocket\Facades\LaravelPayPocket;
 $user = auth()->user();
 LaravelPayPocket::pay($user, 12.34);
 ```
+
+#### Payment Transaction Logs
+
+The `pay()` method returns a collection of `WalletsLog` instances representing all wallet transactions that occurred during the payment. This enables you to track exactly which wallets were used and access detailed transaction information.
+
+**Return Value:**
+
+```php
+@return \Illuminate\Database\Eloquent\Collection<WalletsLog>
+```
+
+**Basic Usage:**
+
+```php
+$user = auth()->user();
+$logs = $user->pay(120.00, 'Order #1234');
+
+// Access transaction details
+foreach ($logs as $log) {
+    echo "Wallet: {$log->wallet_name}, Amount: {$log->value}";
+}
+```
+
+**Practical Examples:**
+
+```php
+// Get the number of wallets used in the payment
+$walletCount = $logs->count();
+
+// Calculate total amount deducted (verification)
+$totalDeducted = $logs->sum('value');
+
+// Get all wallet names used in the transaction
+$walletsUsed = $logs->pluck('wallet_name');
+
+// Access specific log details
+$firstLog = $logs->first();
+echo "From: {$firstLog->from}, To: {$firstLog->to}";
+echo "Reference: {$firstLog->reference}";
+```
+
+**Use Cases:**
+
+-   **Receipt Generation:** Display detailed payment breakdown showing amounts from each wallet
+-   **Audit Trail:** Maintain comprehensive records of payment sources
+-   **Transaction Verification:** Confirm the exact amount deducted from each wallet
+-   **Analytics:** Track wallet usage patterns across payments
+
+**Example: Multi-Wallet Payment**
+
+```php
+$user = auth()->user();
+
+// User has: wallet_1 = $100, wallet_2 = $50
+$logs = $user->pay(120.00, 'Premium subscription');
+
+// Returns collection with 2 logs:
+// Log 1: wallet_1 deducted $100 (100.00 -> 0.00)
+// Log 2: wallet_2 deducted $20 (50.00 -> 30.00)
+
+echo "Payment completed using {$logs->count()} wallet(s)";
+// Output: Payment completed using 2 wallet(s)
+```
+
+**Note:** This feature is backward compatible. Existing code that doesn't capture the return value will continue to work without any modifications.
 
 ### Balance
 
