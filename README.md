@@ -26,16 +26,16 @@
 -   **Package**: laravel-pay-pocket
 -   **Alias name**: Laravel PPP (Laravel Pay Pocket Package)
 -   **Version**: `2.x`
--   **PHP Version**: 8.1+
--   **Laravel Version**: `10.x`, `11.x`
 -   **[Composer](https://getcomposer.org/):** `composer require hpwebdeveloper/laravel-pay-pocket`
 
-### Support Policy
+## Version Compatibility
 
-| Version | Laravel      | PHP           | Release date  | End of improvements | End of support |
-| ------- | ------------ | ------------- | ------------- | ------------------- | -------------- |
-| 1.x     | ^10.0        | 8.1, 8.2, 8.3 | Nov 30, 2023  | Mar 1, 2024         |                |
-| 2.x     | ^10.0, ^11.0 | 8.2, 8.3      | June 27, 2024 | January 30, 2025    |                |
+| Package Version | Laravel Versions | PHP Versions | Status              |
+| --------------- | ---------------- | ------------ | ------------------- |
+| 1.x             | 10.x             | 8.1+         | Security fixes only |
+| 2.x             | 10.x, 11.x, 12.x | 8.1+         | Active support      |
+
+**Note:** The package follows Laravel's philosophy of being as permissive as possible with PHP versions. Your application's `composer.json` will enforce the minimum PHP version required by your Laravel version (10.x requires PHP 8.1+, 11.x and 12.x require PHP 8.2+).
 
 ## Installation:
 
