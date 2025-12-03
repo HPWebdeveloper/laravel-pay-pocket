@@ -12,12 +12,6 @@ enum WalletEnums: string
      */
     public static function isValid(string $type): bool
     {
-        foreach (self::cases() as $case) {
-            if ($case->value === $type) {
-                return true;
-            }
-        }
-
-        return false;
+        return self::tryFrom($type) !== null;
     }
 }
