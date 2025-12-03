@@ -13,6 +13,12 @@ parameters:
 			path: src/Interfaces/WalletOperations.php
 
 		-
+			message: '#^Property HPWebdeveloper\\LaravelPayPocket\\Models\\Wallet\:\:\$createdLog \(HPWebdeveloper\\LaravelPayPocket\\Models\\WalletsLog\) does not accept Illuminate\\Database\\Eloquent\\Model\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Models/Wallet.php
+
+		-
 			message: '#^Method HPWebdeveloper\\LaravelPayPocket\\Services\\PocketServices\:\:pay\(\) has invalid return type HPWebdeveloper\\LaravelPayPocket\\Services\\TKey\.$#'
 			identifier: class.notFound
 			count: 1
@@ -31,31 +37,31 @@ parameters:
 			path: src/Services/PocketServices.php
 
 		-
-			message: '#^Property HPWebdeveloper\\LaravelPayPocket\\Models\\Wallet\:\:\$createdLog \(HPWebdeveloper\\LaravelPayPocket\\Models\\WalletsLog\) does not accept Illuminate\\Database\\Eloquent\\Model\.$#'
-			count: 1
-			path: src/Traits/BalanceOperation.php
-
-		-
 			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\GetWallets is used zero times and is not analysed\.$#'
+			identifier: trait.unused
 			count: 1
 			path: src/Traits/GetWallets.php
 
 		-
 			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\HandlesDeposit is used zero times and is not analysed\.$#'
+			identifier: trait.unused
 			count: 1
 			path: src/Traits/HandlesDeposit.php
 
 		-
 			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\HandlesPayment is used zero times and is not analysed\.$#'
+			identifier: trait.unused
 			count: 1
 			path: src/Traits/HandlesPayment.php
 
 		-
 			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\HasWallet is used zero times and is not analysed\.$#'
+			identifier: trait.unused
 			count: 1
 			path: src/Traits/HasWallet.php
 
 		-
 			message: '#^Trait HPWebdeveloper\\LaravelPayPocket\\Traits\\ManagesWallet is used zero times and is not analysed\.$#'
+			identifier: trait.unused
 			count: 1
 			path: src/Traits/ManagesWallet.php
