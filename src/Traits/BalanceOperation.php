@@ -23,9 +23,11 @@ trait BalanceOperation
      */
     public function decrementAndCreateLog(int|float $value, ?string $notes = null): WalletsLog
     {
-        DB::transaction(function () use ($value, $notes) {
+        return DB::transaction(function () use ($value, $notes) {
             $this->createLog('dec', $value, $notes);
             $this->decrement('balance', $value);
+
+            return $this->createdLog;
         });
     }
 
@@ -34,9 +36,11 @@ trait BalanceOperation
      */
     public function incrementAndCreateLog(int|float $value, ?string $notes = null): WalletsLog
     {
-        DB::transaction(function () use ($value, $notes) {
+        return DB::transaction(function () use ($value, $notes) {
             $this->createLog('inc', $value, $notes);
             $this->increment('balance', $value);
+
+            return $this->createdLog;
         });
     }
 
@@ -62,7 +66,9 @@ trait BalanceOperation
 
         $walletLog->status = 'Done';
 
-        $this->createdLog = $this->logs()->save($walletLog);
+        /** @var WalletsLog $log */
+        $log = $this->logs()->save($walletLog);
+        $this->createdLog = $log;
     }
 
     /**

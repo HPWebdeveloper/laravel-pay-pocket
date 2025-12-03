@@ -13,12 +13,6 @@ parameters:
 			path: src/Interfaces/WalletOperations.php
 
 		-
-			message: '#^Property HPWebdeveloper\\LaravelPayPocket\\Models\\Wallet\:\:\$createdLog \(HPWebdeveloper\\LaravelPayPocket\\Models\\WalletsLog\) does not accept Illuminate\\Database\\Eloquent\\Model\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: src/Models/Wallet.php
-
-		-
 			message: '#^Method HPWebdeveloper\\LaravelPayPocket\\Services\\PocketServices\:\:pay\(\) has invalid return type HPWebdeveloper\\LaravelPayPocket\\Services\\TKey\.$#'
 			identifier: class.notFound
 			count: 1
