@@ -54,9 +54,7 @@ trait HasWallet
             throw new InvalidWalletTypeException("Invalid wallet type '{$walletType}'.");
         }
 
-        $walletEnumType = WalletEnums::tryFrom($walletType);
-
-        $wallet = $this->wallets()->type($walletEnumType)->first();
+        $wallet = $this->wallets()->where('type', $walletType)->first();
 
         if (! $wallet) {
             throw new WalletNotFoundException("Wallet of type '{$walletType}' not found.");
