@@ -11,6 +11,8 @@ class TestCase extends Orchestra
 {
     use RefreshDatabase;
 
+    protected static $latestResponse;
+
     public function getEnvironmentSetUp($app)
     {
         config()->set('app.key', 'base64:EWcFBKBT8lKlGK8nQhTHY+wg19QlfmbhtO9Qnn3NfcA=');
