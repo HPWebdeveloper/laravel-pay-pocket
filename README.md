@@ -9,7 +9,7 @@
 
 **Laravel Pay Pocket** is a package designed for Laravel applications, offering the flexibility to manage multiple wallet types within two dedicated database tables, `wallets` and `wallets_logs`.
 
-**Demo:** https://github.com/HPWebdeveloper/demo-pay-pocket
+**Demo:** [Link to the demo in Laravel 12](https://github.com/HPWebdeveloper/demo-pay-pocket-laravel-12)
 
 **Videos:**
 
@@ -288,7 +288,7 @@ LaravelPayPocket::walletBalanceByType($user, 'wallet_1');
 ### Exceptions
 
 Upon examining the `src/Exceptions` directory within the source code,
-you will discover a variety of exceptions tailored to address each scenario of invalid entry. Review the [demo](https://github.com/HPWebdeveloper/demo-pay-pocket) that accounts for some of the exceptions.
+you will discover a variety of exceptions tailored to address each scenario of invalid entry. Review the [demo](https://github.com/HPWebdeveloper/demo-pay-pocket-laravel-12) that accounts for some of the exceptions.
 
 ### Log
 
