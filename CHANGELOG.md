@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pay-pocket` will be documented in this file.
 
+## 2.3.1 - 2025-12-03
+
+**Full Changelog**: https://github.com/HPWebdeveloper/laravel-pay-pocket/compare/2.3.0...2.3.1
+
 ## 2.3.0 - 2025-12-03
 
 ### What's Changed
