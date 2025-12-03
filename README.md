@@ -21,24 +21,24 @@
 
 ## 📚 Table of Contents
 
-- [Version Compatibility](#version-compatibility)
-- [Installation](#installation)
-- [Updating](#updating)
-- [Preparation](#preparation)
-  - [Prepare User Model](#prepare-user-model)
-  - [Prepare Wallets](#prepare-wallets)
-- [Usage, APIs and Operations](#usage-apis-and-operations)
-  - [Deposit](#deposit)
-  - [Pay](#pay)
-  - [Balance](#balance)
-  - [Exceptions](#exceptions)
-  - [Log](#log)
-- [Testing](#testing)
-- [Changelog](#changelog)
-- [Contributing](#contributing)
-- [Security Vulnerabilities](#security-vulnerabilities)
-- [Credits](#credits)
-- [License](#license)
+-   [Version Compatibility](#version-compatibility)
+-   [Installation](#installation)
+-   [Updating](#updating)
+-   [Preparation](#preparation)
+    -   [Prepare User Model](#prepare-user-model)
+    -   [Prepare Wallets](#prepare-wallets)
+-   [Usage, APIs and Operations](#usage-apis-and-operations)
+    -   [Deposit](#deposit)
+    -   [Pay](#pay)
+    -   [Balance](#balance)
+    -   [Exceptions](#exceptions)
+    -   [Log](#log)
+-   [Testing](#testing)
+-   [Changelog](#changelog)
+-   [Contributing](#contributing)
+-   [Security Vulnerabilities](#security-vulnerabilities)
+-   [Credits](#credits)
+-   [License](#license)
 
 ---
 
@@ -87,7 +87,7 @@ This command will automatically publish the `pay-pocket.php` config file and als
 
 If updating to version `^2.0.0`, new migration and config files have been added to support the new [Transaction Notes Feature](#transaction-notes-8)
 
-Follow the [Installation](#installation) Steps 2 and 3 to update your migrations.
+Follow [Step 2](#installation) (publish migrations) and [Step 3](#installation) (publish config) from the Installation section to update your migrations.
 
 ## Preparation
 
