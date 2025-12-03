@@ -22,7 +22,7 @@ trait HandlesDeposit
     {
         $depositable = $this->getDepositableTypes();
 
-        if (! $this->isRequestValid($type, $depositable)) {
+        if (! $this->isWalletTypeDepositable($type, $depositable)) {
             throw new InvalidDepositException('Invalid deposit request.');
         }
 
@@ -44,12 +44,11 @@ trait HandlesDeposit
      */
     private function getDepositableTypes(): array
     {
-        $depositableTypes = [];
-        foreach (WalletEnums::cases() as $enumCase) {
-            $depositableTypes[$enumCase->value] = strtolower($enumCase->name);
-        }
-
-        return $depositableTypes;
+        return collect(WalletEnums::cases())
+            ->mapWithKeys(function ($enumCase) {
+                return [$enumCase->value => strtolower($enumCase->name)];
+            })
+            ->toArray();
     }
 
     /**
@@ -57,7 +56,7 @@ trait HandlesDeposit
      *
      * @throws InvalidWalletTypeException
      */
-    private function isRequestValid($type, array $depositable): bool
+    private function isWalletTypeDepositable($type, array $depositable): bool
     {
         if (! array_key_exists($type, $depositable)) {
             throw new InvalidWalletTypeException('Invalid deposit type.');
