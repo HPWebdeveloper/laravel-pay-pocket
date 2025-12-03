@@ -35,7 +35,7 @@ class Wallet extends Model
         return $this->morphTo();
     }
 
-    public function scopeType(Builder $query, WalletEnums $type)
+    public function scopeType(Builder $query, WalletEnums $type): void
     {
         $query->where('type', $type->value);
     }

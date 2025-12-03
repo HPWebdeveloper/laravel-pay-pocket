@@ -29,16 +29,10 @@ trait HasWallet
     public function getWalletBalanceAttribute(): int|float
     {
         return collect($this->walletsInOrder())
-            ->reduce(function ($carry, $walletInOrder) {
-                $walletEnumType = WalletEnums::tryFrom($walletInOrder);
-                $wallet = $this->wallets()->type($walletEnumType)->first();
-
-                if ($wallet) {
-                    return $carry + $wallet->balance;
-                }
-
-                return $carry;
-            }, 0);
+            ->map(fn ($walletInOrder) => WalletEnums::tryFrom($walletInOrder))
+            ->map(fn ($walletEnumType) => $this->wallets()->type($walletEnumType)->first())
+            ->filter()
+            ->sum('balance');
     }
 
     /**
