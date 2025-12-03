@@ -45,7 +45,6 @@
 -   **Author**: Hamed Panjeh
 -   **Vendor**: hpwebdeveloper
 -   **Package**: laravel-pay-pocket
--   **Alias name**: Laravel PPP (Laravel Pay Pocket Package)
 -   **Version**: `2.x`
 -   **[Composer](https://getcomposer.org/):** `composer require hpwebdeveloper/laravel-pay-pocket`
 
