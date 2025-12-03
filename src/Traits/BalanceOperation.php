@@ -49,7 +49,7 @@ trait BalanceOperation
 
         $newBalance = $logType === 'dec' ? $currentBalance - $value : $currentBalance + $value;
 
-        $walletLog = (new WalletsLog())->fill([
+        $walletLog = (new WalletsLog)->fill([
             'wallet_name' => $this->type->value,
             'from' => $currentBalance,
             'to' => $newBalance,
