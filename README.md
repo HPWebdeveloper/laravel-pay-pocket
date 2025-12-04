@@ -57,7 +57,7 @@
 
 **Note:** The package follows Laravel's philosophy of being as permissive as possible with PHP versions. Your application's `composer.json` will enforce the minimum PHP version required by your Laravel version (10.x requires PHP 8.1+, 11.x and 12.x require PHP 8.2+).
 
-## Installation:
+## Installation
 
 -   **Step 1:** You can install the package via composer:
 
@@ -74,7 +74,7 @@ php artisan migrate
 
 You have successfully added two dedicated database tables, `wallets` and `wallets_logs`, without making any modifications to the `users` table.
 
--   **Step 3:** Publish the wallet types using
+-   **Step 3:** Publish the wallet types using:
 
 ```bash
 php artisan vendor:publish --tag="pay-pocket-wallets"
@@ -87,7 +87,14 @@ This command will automatically publish the `pay-pocket.php` config file and als
 
 If updating to version `^2.0.0`, new migration and config files have been added to support the new [Transaction Notes Feature](#transaction-notes-8)
 
-Follow [Step 2](#installation) (publish migrations) and [Step 3](#installation) (publish config) from the Installation section to update your migrations.
+Run the following commands to publish the updated migrations and config:
+
+```bash
+php artisan vendor:publish --tag="pay-pocket-migrations"
+php artisan migrate
+php artisan vendor:publish --tag="pay-pocket-wallets"
+php artisan vendor:publish --tag="config"
+```
 
 ## Preparation
 
@@ -165,7 +172,7 @@ LaravelPayPocket::deposit($user, 'wallet_1', 123.45);
 
 Note: `wallet_1` and `wallet_2` must already be defined in the `WalletEnums`.
 
-#### Transaction Info ([#8][i8])
+#### Transaction Notes ([#8][i8])
 
 When you need to add descriptions for a specific transaction, the `$notes` parameter enables you to provide details explaining the reason behind the transaction.
 
@@ -301,10 +308,9 @@ composer install
 
 composer test
 
+# Or
 
-// Or
-
-./vender/bin/pest
+./vendor/bin/pest
 ```
 
 ## Changelog
